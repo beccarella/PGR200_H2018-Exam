@@ -1,6 +1,5 @@
 package no.kristiania.pgr200.database;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -17,19 +16,38 @@ public class ConferenceTalkDaoTest {
         ConferenceTalk talk = sampleTalk();
         dao.save(talk);
         assertThat(dao.listAll()).contains(talk);
-
+        dao.delete(talk.getId());
     }
 
     @Test
-    public void shouldIncludeSavedTalkInListAll() throws SQLException {
+    public void shouldFindTalkById() throws SQLException {
         ConferenceTalk talk = sampleTalk();
         dao.save(talk);
-        assertThat(dao.listAll())
-                .contains(talk);
+        assertThat(talk.getId()).isNotNull();
+        assertThat(dao.retrieve(talk.getId())).isEqualToComparingFieldByField(talk);
+        dao.delete(talk.getId());
     }
+
+//    @Test
+//    public void shouldDeleteTalk() throws SQLException {
+//        ConferenceTalk talk = sampleTalk();
+//        dao.save(talk);
+//        assertThat(dao.listAll()).contains(talk);
+//        dao.delete(talk.getId());
+//        assertThat(dao.listAll()).doesNotContain(talk);
+//    }
+
+//    @Test
+//    public void shouldUpdateTalkTitle() throws SQLException {
+//        ConferenceTalk talk = sampleTalk();
+//        dao.save(talk);
+//        ConferenceTalk newtalk = dao.update("update conference_talks set title = ? where id = ?", 1, talk.setTitle("this is a new title");
+//        assertThat(dao.listAll().contains(newtalk));
+//    }
 
     private ConferenceTalk sampleTalk() {
         ConferenceTalk talk = new ConferenceTalk();
+        talk.setId(Long.valueOf(1));
         talk.setTitle("My Talk Title");
         talk.setDescription("A longer description of the talk");
         return talk;

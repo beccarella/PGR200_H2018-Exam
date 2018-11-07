@@ -21,6 +21,11 @@ public interface DataAccessObject <T> {
     void delete(Long id) throws SQLException;
 
     /**
+     *
+     */
+//    void update(Long id) throws SQLException;
+
+    /**
      * Finds the single object with the argument id
      * in the database.
      *

@@ -1,6 +1,6 @@
 package no.kristiania.pgr200.database;
 
-import org.assertj.core.api.Assertions;
+
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -19,15 +19,26 @@ public class DayDaoTest {
         assertThat(day).hasNoNullFieldsOrProperties();
         assertThat(dao.retrieve(day.getId()))
                 .isEqualToComparingFieldByField(day);
+        dao.delete(day.getId());
     }
 
     @Test
-    public void shouldIncludeSavedDayInListAll() throws SQLException {
+    public void shouldFindDayById() throws SQLException {
         Day day = sampleDay();
         dao.save(day);
-        assertThat(dao.listAll())
-                .contains(day);
+        assertThat(day.getId()).isNotNull();
+        assertThat(dao.retrieve(day.getId())).isEqualToComparingFieldByField(day);
+        dao.delete(day.getId());
     }
+
+//    @Test
+//    public void shouldDeleteDay() throws SQLException {
+//        Day day = sampleDay();
+//        dao.save(day);
+//        assertThat(dao.listAll()).contains(day);
+//        dao.delete(day.getId());
+//        assertThat(dao.listAll()).doesNotContain(day);
+//    }
 
     private Day sampleDay() {
         Day day = new Day();

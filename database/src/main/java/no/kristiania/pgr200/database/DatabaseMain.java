@@ -6,7 +6,6 @@ import org.postgresql.ds.PGPoolingDataSource;
 
 import javax.sql.DataSource;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -15,7 +14,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Properties;
-import java.util.UUID;
+
 
 public class DatabaseMain {
 
@@ -57,7 +56,7 @@ public class DatabaseMain {
         Properties properties = new Properties();
         InputStream input = null;
         try {
-            input = new FileInputStream("src/main/resources/innlevering.properties");
+            input = new FileInputStream("database/src/main/resources/innlevering.properties");
             properties.load(input);
 
             PGPoolingDataSource dataSource = new PGPoolingDataSource();
@@ -88,7 +87,8 @@ public class DatabaseMain {
             String sql = "drop table conference_talks cascade;"
                     + "drop table days cascade;"
                     + "drop table timeslots cascade;"
-                    + "drop table flyway_schema_history cascade";
+                    + "drop table  topics cascade; "
+                    + "drop table flyway_schema_history cascade;";
             try(PreparedStatement statement = conn.prepareStatement(sql)) {
                 statement.executeUpdate();
             }

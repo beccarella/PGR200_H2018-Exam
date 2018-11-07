@@ -90,8 +90,12 @@ public class HttpEchoServer {
     static {
         statusMessages.put("200", "OK");
         statusMessages.put("202", "Accepted");
+        statusMessages.put("400", "Bad Request");
+        statusMessages.put("403", "Forbidden");
         statusMessages.put("404", "Not Found");
         statusMessages.put("500", "Internal Server Error");
+        statusMessages.put("503", "Service Unavailable");
+        statusMessages.put("504", "Gateway Timeout");
     }
 
 

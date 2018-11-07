@@ -41,4 +41,11 @@ public class HttpPath {
     public HttpQuery query() {
         return query;
     }
+
+    public String[] getPathParts() {
+//        int endPos = path.indexOf('?');
+//        String[] parts = path.substring(1, endPos).split("/");
+//        return parts;
+        return getPath().substring(1).split("/");
+    }
 }

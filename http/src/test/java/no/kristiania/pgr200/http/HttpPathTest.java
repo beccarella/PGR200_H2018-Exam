@@ -39,4 +39,13 @@ public class HttpPathTest {
         assertThat(path.toString()).isEqualTo("/echo?status=200");
     }
 
+    @Test
+    public void shouldParseUrl() {
+        HttpPath path = new HttpPath("/myapp/echo?status=402&body=vi%20plukker%20bl%C3%A5b%C3%A6r");
+        assertThat(path.getPath()).isEqualTo("/myapp/echo");
+        assertThat(path.getPathParts()).containsExactly("myapp", "echo");
+        assertThat(path.getParameter("status")).hasValue("402");
+        assertThat(path.getParameter("body")).hasValue("vi plukker blåbær");
+    }
+
 }

@@ -32,6 +32,16 @@ public class ConferenceTalkDao extends AbstractDao implements DataAccessObject<C
         }
     }
 
+    public void update(String sql, Long id, String newTitle) throws SQLException {
+        try(Connection connection = dataSource.getConnection()) {
+            try(PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setLong(1, id);
+                statement.setString(2, newTitle);
+                statement.executeUpdate();
+            }
+        }
+    }
+
     @Override
     public void delete(Long id) throws SQLException {
         deleteObject("delete from conference_talks where id = ?", id);
