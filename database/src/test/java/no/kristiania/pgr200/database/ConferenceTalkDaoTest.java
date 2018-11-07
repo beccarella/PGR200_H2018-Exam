@@ -28,14 +28,15 @@ public class ConferenceTalkDaoTest {
         dao.delete(talk.getId());
     }
 
-//    @Test
-//    public void shouldDeleteTalk() throws SQLException {
-//        ConferenceTalk talk = sampleTalk();
-//        dao.save(talk);
-//        assertThat(dao.listAll()).contains(talk);
-//        dao.delete(talk.getId());
-//        assertThat(dao.listAll()).doesNotContain(talk);
-//    }
+    @Test
+    public void shouldDeleteTalk() throws SQLException {
+        ConferenceTalk talk = sampleTalk();
+        dao.save(talk);
+        assertThat(dao.listAll()).contains(talk);
+        dao.delete(talk.getId());
+        assertThat(dao.listAll()).doesNotContain(talk);
+    }
+
 
 //    @Test
 //    public void shouldUpdateTalkTitle() throws SQLException {

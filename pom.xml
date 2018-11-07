@@ -7,7 +7,7 @@
   <modules>
     <module>database</module>
       <module>http</module>
-      <module>commandline-parser</module>
+      <module>commandline</module>
   </modules>
 
 
