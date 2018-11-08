@@ -5,6 +5,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 public class HttpQuery {
@@ -18,6 +19,13 @@ public class HttpQuery {
     }
 
     public HttpQuery() {
+    }
+
+    public HttpQuery add(String parameter, String value) {
+        if(value != null) {
+            parameters.put(parameter,value);
+        }
+        return this;
     }
 
     public void parseParameter(String parameter) {
@@ -68,5 +76,17 @@ public class HttpQuery {
 
     public Optional<String> get(String key) {
         return Optional.ofNullable(parameters.get(key));
+    }
+
+    public boolean equals(Object o) {
+        if(!(o instanceof HttpQuery)) {
+            return false;
+        }
+        HttpQuery other = (HttpQuery) o;
+        return Objects.equals(parameters, other.parameters);
+    }
+
+    public int hashCode() {
+        return Objects.hash(parameters);
     }
 }

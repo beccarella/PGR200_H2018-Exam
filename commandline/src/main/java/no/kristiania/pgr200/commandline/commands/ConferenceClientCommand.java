@@ -12,4 +12,5 @@ public interface ConferenceClientCommand {
     }
 
     void readArguments(String[] args);
+
 }

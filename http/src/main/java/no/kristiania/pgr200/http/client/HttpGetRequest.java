@@ -1,31 +1,31 @@
 package no.kristiania.pgr200.http.client;
 
-import no.kristiania.pgr200.http.server.HttpHeaders;
+import no.kristiania.pgr200.http.server.HttpHeader;
 import no.kristiania.pgr200.http.server.HttpQuery;
 
 import java.io.IOException;
 import java.net.Socket;
 
-public class HttpRequest {
+public class HttpGetRequest {
 
     private String hostname;
     private int port;
     private String requestTarget;
     private String method = "GET";
-    private HttpHeaders httpHeaders;
+    private HttpHeader httpHeader;
     private String body;
 
-    public HttpRequest(String hostname, int port, String requestTarget) {
+    public HttpGetRequest(String hostname, int port, String requestTarget) {
         this.hostname = hostname;
         this.port = port;
         this.requestTarget = requestTarget;
-        this.httpHeaders = new HttpHeaders()
+        this.httpHeader = new HttpHeader()
                 .put("Connection", "close")
                 .put("Host", hostname);
     }
 
     public static void main(String[] args) throws IOException {
-        new HttpRequest("urlecho.appspot.com", 80, "/echo").execute();
+        new HttpGetRequest("urlecho.appspot.com", 80, "/echo").execute();
     }
 
     public HttpResponse execute() throws IOException {
@@ -33,9 +33,9 @@ public class HttpRequest {
             writeRequestLine(socket);
 
             if (body != null) {
-                httpHeaders.setContentLength(body.getBytes().length);
+                httpHeader.setContentLength(body.getBytes().length);
             }
-            httpHeaders.writeTo(socket.getOutputStream());
+            httpHeader.writeTo(socket.getOutputStream());
             if (body != null) {
                 socket.getOutputStream().write(body.getBytes());
             }
@@ -54,6 +54,6 @@ public class HttpRequest {
 
     public void setFormBody(HttpQuery query) {
         this.body = query.toString();
-        httpHeaders.put("Content-type", "application/x-www-form-urlencoded");
+        httpHeader.put("Content-type", "application/x-www-form-urlencoded");
     }
 }

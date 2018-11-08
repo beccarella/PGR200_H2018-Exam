@@ -1,13 +1,13 @@
 package no.kristiania.pgr200.http.client;
 
-import no.kristiania.pgr200.http.server.HttpHeaders;
+import no.kristiania.pgr200.http.server.HttpHeader;
 
 import java.io.IOException;
 import java.net.Socket;
 
 public class HttpResponse {
 
-    private HttpHeaders responseHeaders = new HttpHeaders();
+    private HttpHeader responseHeaders = new HttpHeader();
     private int statusCode;
     private String statusText;
     private String body;

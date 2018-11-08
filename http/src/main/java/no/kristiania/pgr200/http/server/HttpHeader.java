@@ -10,11 +10,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
-public class HttpHeaders {
+public class HttpHeader {
 
     private Map<String, String> headers = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
-    public HttpHeaders put(String key, String value) {
+    public HttpHeader put(String key, String value) {
         headers.put(key, value);
         return this;
     }
@@ -52,7 +52,7 @@ public class HttpHeaders {
         }
     }
 
-    public HttpHeaders setContentLength(int contentLength) {
+    public HttpHeader setContentLength(int contentLength) {
         return put("Content-Length", String.valueOf(contentLength));
     }
 

@@ -20,7 +20,7 @@ public class ConferenceTalkDao extends AbstractDao implements DataAccessObject<C
     public void save(ConferenceTalk talk) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
             String sql =
-                    "INSERT INTO  conference_talks (title, description) values (?, ?)";
+                    "insert into conference_talks (title, description) values (?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
                 statement.setString(1, talk.getTitle());
                 statement.setString(2, talk.getDescription());

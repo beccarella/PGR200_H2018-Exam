@@ -6,7 +6,7 @@ import java.io.OutputStream;
 
 public class HttpIO {
 
-    static String readLine(InputStream inputStream) throws IOException {
+    public static String readLine(InputStream inputStream) throws IOException {
         StringBuilder result = new StringBuilder();
         int c;
         while ((c = inputStream.read()) != -1) {

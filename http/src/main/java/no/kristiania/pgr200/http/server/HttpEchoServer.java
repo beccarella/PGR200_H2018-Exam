@@ -44,14 +44,14 @@ public class HttpEchoServer {
         String body;
 
         HttpQuery query;
-        HttpHeaders responseHeaders = new HttpHeaders();
+        HttpHeader responseHeaders = new HttpHeader();
 
         try {
             String requestLine = HttpIO.readLine(clientSocket.getInputStream());
             String requestTarget = requestLine.split(" ")[1];
             HttpPath path = new HttpPath(requestTarget);
 
-            HttpHeaders headers = new HttpHeaders();
+            HttpHeader headers = new HttpHeader();
             headers.readHeaders(clientSocket.getInputStream());
 
             if (requestLine.split(" ")[0].equals("POST")) {

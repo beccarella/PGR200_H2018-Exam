@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 
-import no.kristiania.pgr200.http.client.HttpRequest;
+import no.kristiania.pgr200.http.client.HttpGetRequest;
 import no.kristiania.pgr200.http.client.HttpResponse;
 import no.kristiania.pgr200.http.server.HttpEchoServer;
 import no.kristiania.pgr200.http.server.HttpQuery;
@@ -23,14 +23,14 @@ public class HttpServerTest {
 
     @Test
     public void shouldExecuteHttpRequest() throws IOException {
-        HttpRequest request = new HttpRequest("localhost", server.getPort(), "/echo");
+        HttpGetRequest request = new HttpGetRequest("localhost", server.getPort(), "/echo");
         HttpResponse response = request.execute();
         assertThat(response.getStatusCode()).isEqualTo(200);
     }
 
     @Test
     public void shouldSetStatusLine() throws IOException {
-        HttpRequest request = new HttpRequest("localhost", server.getPort(), "/echo?status=404");
+        HttpGetRequest request = new HttpGetRequest("localhost", server.getPort(), "/echo?status=404");
         HttpResponse response = request.execute();
         assertThat(response.getStatusCode()).isEqualTo(404);
         assertThat(response.getStatusText()).isEqualTo("Not Found");
@@ -38,7 +38,7 @@ public class HttpServerTest {
 
     @Test
     public void shouldParseHeaders() throws IOException {
-        HttpRequest request = new HttpRequest("localhost", server.getPort(),
+        HttpGetRequest request = new HttpGetRequest("localhost", server.getPort(),
                 "/echo?Location=http%3A%2F%2Fwww.google.com");
         HttpResponse response = request.execute();
         assertThat(response.getHeader("location")).isEqualTo("http://www.google.com");
@@ -46,7 +46,7 @@ public class HttpServerTest {
 
     @Test
     public void shouldReadBody() throws IOException {
-        HttpRequest request = new HttpRequest("localhost", server.getPort(),
+        HttpGetRequest request = new HttpGetRequest("localhost", server.getPort(),
                 "/echo?body=hello+world");
         HttpResponse response = request.execute();
         assertThat(response.getBody()).isEqualTo("hello world");
@@ -55,7 +55,7 @@ public class HttpServerTest {
 
     @Test
     public void shouldPostData() throws IOException {
-        HttpRequest request = new HttpRequest("localhost", server.getPort(),
+        HttpGetRequest request = new HttpGetRequest("localhost", server.getPort(),
                 "/echo");
         request.setMethod("POST");
         request.setFormBody(new HttpQuery().put("body", "hello world").put("status", "202"));
@@ -65,7 +65,7 @@ public class HttpServerTest {
 
     @Test
     public void shouldReturn500ForPostWithoutData() throws IOException {
-        HttpRequest request = new HttpRequest("localhost", server.getPort(),
+        HttpGetRequest request = new HttpGetRequest("localhost", server.getPort(),
                 "/echo");
         request.setMethod("POST");
         HttpResponse response = request.execute();

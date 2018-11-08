@@ -1,6 +1,7 @@
 package no.kristiania.pgr200.database;
 
 
+import no.kristiania.pgr200.database.dao.DayDao;
 import no.kristiania.pgr200.database.entity.Day;
 import org.junit.Test;
 

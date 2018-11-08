@@ -1,5 +1,6 @@
 package no.kristiania.pgr200.database;
 
+import no.kristiania.pgr200.database.dao.ConferenceTalkDao;
 import no.kristiania.pgr200.database.entity.ConferenceTalk;
 import org.junit.Test;
 

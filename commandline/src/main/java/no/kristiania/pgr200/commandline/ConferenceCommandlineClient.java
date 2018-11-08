@@ -13,7 +13,6 @@ public class ConferenceCommandlineClient {
             command = new AddTalkCommand();
         }
 
-
         command.readArguments(args);
         return command;
     }
