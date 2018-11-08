@@ -1,5 +1,7 @@
 package no.kristiania.pgr200.database;
 
+import no.kristiania.pgr200.database.dao.TimeslotDao;
+import no.kristiania.pgr200.database.entity.Timeslot;
 import org.junit.Test;
 
 

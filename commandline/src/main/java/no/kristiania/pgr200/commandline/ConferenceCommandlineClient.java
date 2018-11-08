@@ -1,5 +1,9 @@
 package no.kristiania.pgr200.commandline;
 
+import no.kristiania.pgr200.commandline.commands.AddTalkCommand;
+import no.kristiania.pgr200.commandline.commands.ConferenceClientCommand;
+import no.kristiania.pgr200.commandline.commands.ListTalkCommand;
+
 public class ConferenceCommandlineClient {
     public ConferenceClientCommand decodeCommand(String[] args) {
         ConferenceClientCommand command;

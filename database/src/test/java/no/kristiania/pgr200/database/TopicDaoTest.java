@@ -1,5 +1,7 @@
 package no.kristiania.pgr200.database;
 
+import no.kristiania.pgr200.database.dao.TopicDao;
+import no.kristiania.pgr200.database.entity.Topic;
 import org.junit.Test;
 
 import java.sql.SQLException;

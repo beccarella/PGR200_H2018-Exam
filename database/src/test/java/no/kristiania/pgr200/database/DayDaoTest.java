@@ -1,6 +1,7 @@
 package no.kristiania.pgr200.database;
 
 
+import no.kristiania.pgr200.database.entity.Day;
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -31,14 +32,14 @@ public class DayDaoTest {
         dao.delete(day.getId());
     }
 
-//    @Test
-//    public void shouldDeleteDay() throws SQLException {
-//        Day day = sampleDay();
-//        dao.save(day);
-//        assertThat(dao.listAll()).contains(day);
-//        dao.delete(day.getId());
-//        assertThat(dao.listAll()).doesNotContain(day);
-//    }
+    @Test
+    public void shouldDeleteDay() throws SQLException {
+        Day day = sampleDay();
+        dao.save(day);
+        assertThat(dao.listAll()).contains(day);
+        dao.delete(day.getId());
+        assertThat(dao.listAll()).doesNotContain(day);
+    }
 
     private Day sampleDay() {
         Day day = new Day();

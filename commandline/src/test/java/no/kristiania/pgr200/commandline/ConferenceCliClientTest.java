@@ -1,5 +1,8 @@
 package no.kristiania.pgr200.commandline;
 
+import no.kristiania.pgr200.commandline.commands.AddTalkCommand;
+import no.kristiania.pgr200.commandline.commands.ConferenceClientCommand;
+import no.kristiania.pgr200.commandline.commands.ListTalkCommand;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

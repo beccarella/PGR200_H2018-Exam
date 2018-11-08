@@ -2,6 +2,7 @@ package no.kristiania.pgr200.http;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import no.kristiania.pgr200.http.server.HttpPath;
 import org.junit.Test;
 
 public class HttpPathTest {

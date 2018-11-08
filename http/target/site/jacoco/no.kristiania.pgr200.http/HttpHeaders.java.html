@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HttpHeaders.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">http</a> &gt; <a href="index.source.html" class="el_package">no.kristiania.pgr200.http</a> &gt; <span class="el_source">HttpHeaders.java</span></div><h1>HttpHeaders.java</h1><pre class="source lang-java linenums">package no.kristiania.pgr200.http;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TreeMap;
+
+<span class="fc" id="L11">public class HttpHeaders {</span>
+
+<span class="fc" id="L13">    private Map&lt;String, String&gt; headers = new TreeMap&lt;&gt;(String.CASE_INSENSITIVE_ORDER);</span>
+
+    public HttpHeaders put(String key, String value) {
+<span class="fc" id="L16">        headers.put(key, value);</span>
+<span class="fc" id="L17">        return this;</span>
+    }
+
+    public void writeTo(OutputStream outputStream) throws IOException {
+<span class="fc" id="L21">        writeHeaders(outputStream);</span>
+<span class="fc" id="L22">        writeEmptyLine(outputStream);</span>
+<span class="fc" id="L23">    }</span>
+
+    public void writeEmptyLine(OutputStream outputStream) throws IOException {
+<span class="fc" id="L26">        outputStream.write(&quot;\r\n&quot;.getBytes());</span>
+<span class="fc" id="L27">    }</span>
+
+    public void writeHeaders(OutputStream outputStream) throws IOException {
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        for (Entry&lt;String, String&gt; entry : headers.entrySet()) {</span>
+<span class="fc" id="L31">            outputStream.write((entry.getKey() + &quot;: &quot; + entry.getValue() + &quot;\r\n&quot;).getBytes());</span>
+<span class="fc" id="L32">        }</span>
+<span class="fc" id="L33">    }</span>
+
+    public void parseHeaderLine(String headerLine) throws UnsupportedEncodingException {
+<span class="fc" id="L36">        int colonPos = headerLine.indexOf(':');</span>
+<span class="fc" id="L37">        String key = headerLine.substring(0, colonPos).trim();</span>
+<span class="fc" id="L38">        String value = headerLine.substring(colonPos+1).trim();</span>
+<span class="fc" id="L39">        headers.put(key, value);</span>
+<span class="fc" id="L40">    }</span>
+
+    public String get(String key) {
+<span class="fc" id="L43">        return headers.get(key);</span>
+    }
+
+    public void readHeaders(InputStream inputStream) throws IOException {
+        String headerLine;
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        while (!(headerLine = HttpIO.readLine(inputStream)).isEmpty()) {</span>
+<span class="fc" id="L49">            parseHeaderLine(headerLine);</span>
+        }
+<span class="fc" id="L51">    }</span>
+
+    public HttpHeaders setContentLength(int contentLength) {
+<span class="fc" id="L54">        return put(&quot;Content-Length&quot;, String.valueOf(contentLength));</span>
+    }
+
+    public int getContentLength() {
+<span class="fc" id="L58">        String contentLength = get(&quot;Content-Length&quot;);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        return contentLength != null ? Integer.parseInt(contentLength) : -1;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

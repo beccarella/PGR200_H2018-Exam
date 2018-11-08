@@ -4,6 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 
+import no.kristiania.pgr200.http.client.HttpRequest;
+import no.kristiania.pgr200.http.client.HttpResponse;
+import no.kristiania.pgr200.http.server.HttpEchoServer;
+import no.kristiania.pgr200.http.server.HttpQuery;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

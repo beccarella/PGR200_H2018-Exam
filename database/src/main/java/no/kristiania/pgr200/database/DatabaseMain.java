@@ -1,6 +1,12 @@
 package no.kristiania.pgr200.database;
 
 
+import no.kristiania.pgr200.database.dao.ConferenceTalkDao;
+import no.kristiania.pgr200.database.dao.DayDao;
+import no.kristiania.pgr200.database.dao.TimeslotDao;
+import no.kristiania.pgr200.database.entity.ConferenceTalk;
+import no.kristiania.pgr200.database.entity.Day;
+import no.kristiania.pgr200.database.entity.Timeslot;
 import org.flywaydb.core.Flyway;
 import org.postgresql.ds.PGPoolingDataSource;
 
@@ -56,7 +62,7 @@ public class DatabaseMain {
         Properties properties = new Properties();
         InputStream input = null;
         try {
-            input = new FileInputStream("database/src/main/resources/innlevering.properties");
+            input = new FileInputStream("database/src/innlevering.properties");
             properties.load(input);
 
             PGPoolingDataSource dataSource = new PGPoolingDataSource();

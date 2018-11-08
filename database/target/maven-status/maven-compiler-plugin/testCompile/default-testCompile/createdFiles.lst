@@ -1,0 +1,6 @@
+no/kristiania/pgr200/database/DatabaseTest.class
+no/kristiania/pgr200/database/ConferenceTalkDaoTest.class
+no/kristiania/pgr200/database/TimeslotDaoTest.class
+no/kristiania/pgr200/database/DayDaoTest.class
+no/kristiania/pgr200/database/TopicDaoTest.class
+no/kristiania/pgr200/database/TestDataSource.class
