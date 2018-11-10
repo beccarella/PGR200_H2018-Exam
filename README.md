@@ -1,30 +1,12 @@
 # PGR200 Hovedinnlevering
 
-Rebecca Urquhart(urqreb17) og Tharin Cho (clotha17)
+Rebecca Urquhart(urqreb17) og Tharin Chobkaphol (clotha17)
 
 
 ## Hvordan kjøre programmet
 
 
-## Vurdering av eget arbeid
-Vi valgte å beholde samme gruppe som på arbeidskrav 2 da vi følte vi arbeidet forholdsvis greit sammen. Vi har et forholdsvis likt kunnskap-og ferdighetsnivå, og det skal sies at det ikke er blant det høyeste i klassen, men vi følte at vi lærte såpass mye da vi jobbet sammen sist, at vi tenkte vi ville få like mye ut av et nytt samarbeid. 
-Dette har vært et adskillig tøffere prosjekt å jobbe med. Stressnivået har vært skyhøyt, vi har blitt pushet til randen og det har vært ikke alltid vært den beste tonen oss i mellom. Vi har likevel klart å komme frem til en løsning, som kanskje ikke er like god som vi skulle ønske, men som vi begge har lagt absolutt alt vi har i. Hadde vi blitt vurdert ut i fra hvor mye sjel, blod, svette og tårer vi har lagt i arbeidet, så hadde vi definitivt fått en A. Rent faglig sett derimot, så mener vi at vi har gjort nok til å få en C.
-
-Innleveringsfrist: 12. november kl 09:00. **Viktig:** WiseFlow *stenger* når fristen er ute - lever i tide.
-
-Tag koden med `innlevering` i GitHub og last opp en ZIP-fil til WiseFlow. Dersom du ikke fikk godkjent innlevering #1 eller #2 i første runde, last opp zip-fil av disse i tillegg.
-
-## Oppgave
-
-Du har funnet en konferanse du er interessert i å gå på, men du har ikke råd til billetten. Men frykt ikke: etter at du tok kontakt med de som organiserer konferansen fikk du høre at du kunne få gratisbillett dersom du hjelper til å lage noe programvare for konferansen.
-
-Oppgaven din: lag en server for appen som inneholder konferanseprogrammet i en database. Funksjonaliteten må som et minimum tillate at man legger inn og lister ut foredrag på konferansen. Du bruke datamodellen angitt under eller forenkle eller endre den slik du selv ønsker.
-
-Programmet skal følge god programmeringsskikk: Det skal ha enhetstester, det skal ha en god README-dokumentasjon, det skal hente inn konfigurasjon fra en .properties-fil. Fila skal ligge i current working directory, hete `innlevering.properties` og inneholde properties `dataSource.url`, `dataSource.username` og `dataSource.password`. Når vi evaluerer oppgaven ønsker vi å bruke egne verdier for disse. Prosjektet bør også bygge automatisk på [Travis CI](https://travis-ci.com).
-
-Pass på at det er godt med tester, at koden kompilerer og kjører ok med "mvn test" og at du beskriver hvordan man tester løsningen manuelt.
-
-Eksempel kjøring (inkluder dette i README.md-fila deres):
+#### Eksempel kjøring
 
 ```bash
 > mvn test
@@ -67,17 +49,23 @@ Eksempel kjøring (inkluder dette i README.md-fila deres):
 [INFO] Final Memory: 21M/211M
 [INFO] ------------------------------------------------------------------------
 > psql --username postgres --command="create database ... with owner .."'
-> Oppdater innlevering.properties med dataSource.url, dataSource.username, dataSource.password
 > java -jar target/database-innlevering.jar resetdb
 > java -jar target/database-innlevering.jar insert "Mitt foredrag"
 > java -jar target/database-innlevering.jar list
 ```
 
-Som en del av semesterarbeidet skal dere levere en video på 3-8 minutter. Dersom dere har laget dette i forbindelse med innlevering #1 eller innlevering #2 kan dere bare legge ved denne video. I motsatt fall skal dere ta opp en video for mappeinnleveringen på 3-8 minutter der dere parprogrammerer. Velg gjerne en bit med kode som dere refactorerer. Screencast-o-matic anbefales som verktøy for video-opptaket, men andre verktøy kan benyttes. En lenke til videoen skal leveres og ikke videoen selv. Husk å åpne for tilgang til videoen ("unlisted" i Youtube) og legge inn lenke fra README.
 
-Dere skal også gi tilbakemelding på en annen gruppes besvarelse. Tilbakemeldingen skal skrives i en egen fil (tilsvarende format som en README-fil) og inkluderes både i deres prosjekt og den andre gruppens prosjekt. Tilbakemeldingen dere har mottatt skal ligge i en fil som heter `MOTTATT-TILBAKEMELDING.md` og tilbakemeldingen dere har gitt skal hete `GITT-TILBAKEMELDING.md`.
+## Vurdering av eget arbeid
 
-I tilbakemeldingen er det lurt å stille spørsmålene: 1. Hva lærte jeg av denne koden? 2. Hva forsto jeg ikke av denne koden? 3. Hva tror jeg forfatterne av koden kunne ha nyttig av å lære?
+Dette har vært et adskillig tøffere prosjekt å jobbe med enn arbeidskrav 2. Stressnivået har vært skyhøyt, vi har blitt pushet til randen og det har ikke alltid vært den beste tonen oss i mellom. Men vi har kjempet igjennom det og partnerskapet er fortsatt inntakt. Vi lært mye mer om det å jobbe i et partnerskap på dette prosjektet enn vi har gjort på de forrige. 
+
+Vi har klart å komme frem til en løsning, som kanskje ikke er like god som vi skulle ønske, men som vi begge har lagt absolutt alt vi har i. Hadde vi blitt vurdert ut i fra hvor mye innsats vi har lagt i arbeidet, så hadde vi definitivt fått en A. Rent faglig sett derimot, så mener vi at vi har gjort nok til å få en C.
+
+Vi har slitt veldig med å forstå hvor det er logisk å sette koblingen (i hvilken klasse og metode vi skal skrive koden + hvordan faktisk skrive koden) mellom server og database. På dette tidspunktet føler vi at vi fortsatt ikke er helt 100% i vår forståelse av sockets.
+
+Vi skulle gjerne hatt en...
+
+Vi har heller ikke rukket å lage ny video.
 
 ### Arkitektur
 
@@ -90,6 +78,15 @@ I tilbakemeldingen er det lurt å stille spørsmålene: 1. Hva lærte jeg av den
 ### Forslag til datamodell
 
 ![Datamodell](doc/conference-data-model.png)
+
+## Link til video
+
+https://www.youtube.com/watch?v=laElnEZqslE
+
+
+##
+
+I tilbakemeldingen er det lurt å stille spørsmålene: 1. Hva lærte jeg av denne koden? 2. Hva forsto jeg ikke av denne koden? 3. Hva tror jeg forfatterne av koden kunne ha nyttig av å lære?
 
 ## Sjekkliste for innleveringen
 

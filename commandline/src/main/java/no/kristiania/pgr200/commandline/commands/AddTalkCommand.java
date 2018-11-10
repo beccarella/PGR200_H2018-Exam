@@ -30,6 +30,8 @@ public class AddTalkCommand implements ConferenceClientCommand {
         this.topic = topic;
     }
 
+
+
     @Override
     public void readArguments(String[] args) {
         setTitle(getArgument(args, "-title"));

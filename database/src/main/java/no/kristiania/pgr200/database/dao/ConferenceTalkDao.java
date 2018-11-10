@@ -16,14 +16,28 @@ public class ConferenceTalkDao extends AbstractDao implements DataAccessObject<C
         super(dataSource);
     }
 
+    public void insertTalk(String title, String description, String topic) throws SQLException {
+        try (Connection connection = dataSource.getConnection()) {
+            String sql =
+                    "insert into conference_talks (title, description, topic) values (?, ?, ?)";
+            try (PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+                statement.setString(1, title);
+                statement.setString(2, description);
+                statement.setString(3, topic);
+                statement.executeUpdate();
+            }
+        }
+    }
+
     @Override
     public void save(ConferenceTalk talk) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
             String sql =
-                    "insert into conference_talks (title, description) values (?, ?)";
+                    "insert into conference_talks (title, description, topic) values (?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
                 statement.setString(1, talk.getTitle());
                 statement.setString(2, talk.getDescription());
+                statement.setString(3, talk.getTopic());
                 statement.executeUpdate();
 
                 try (ResultSet rs = statement.getGeneratedKeys()) {
@@ -34,11 +48,15 @@ public class ConferenceTalkDao extends AbstractDao implements DataAccessObject<C
         }
     }
 
-    public void update(String sql, Long id, String newTitle) throws SQLException {
+    public void update(Long id, String newTitle, String newDescription, String newTopic) throws SQLException {
         try(Connection connection = dataSource.getConnection()) {
+            String sql =
+                    "update conference_talks set title = ? set description = ? set topic = ? where id = ?";
             try(PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setLong(1, id);
                 statement.setString(2, newTitle);
+                statement.setString(3, newDescription);
+                statement.setString(4, newTopic);
                 statement.executeUpdate();
             }
         }
@@ -65,6 +83,7 @@ public class ConferenceTalkDao extends AbstractDao implements DataAccessObject<C
         talk.setId(rs.getLong("id"));
         talk.setTitle(rs.getString("title"));
         talk.setDescription(rs.getString("description"));
+        talk.setTopic(rs.getString("topic"));
         return talk;
     }
 }

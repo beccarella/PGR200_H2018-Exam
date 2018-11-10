@@ -4,7 +4,7 @@ package no.kristiania.pgr200.database.entity;
 import java.util.Objects;
 
 public class ConferenceTalk {
-    private String title, description;
+    private String title, description, topic;
     private Long id;
 
     public long getId() {
@@ -29,6 +29,14 @@ public class ConferenceTalk {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
     @Override

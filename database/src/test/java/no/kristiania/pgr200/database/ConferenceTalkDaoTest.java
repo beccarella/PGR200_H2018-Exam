@@ -39,13 +39,13 @@ public class ConferenceTalkDaoTest {
         assertThat(dao.listAll()).doesNotContain(talk);
     }
 
-
 //    @Test
-//    public void shouldUpdateTalkTitle() throws SQLException {
+//    public void shouldUpdateTalk() throws SQLException {
 //        ConferenceTalk talk = sampleTalk();
 //        dao.save(talk);
-//        ConferenceTalk newtalk = dao.update("update conference_talks set title = ? where id = ?", 1, talk.setTitle("this is a new title");
-//        assertThat(dao.listAll().contains(newtalk));
+//        assertThat(dao.listAll()).contains(talk);
+//        ConferenceTalk talkUpdate = updatedTalk();
+//        assertThat(dao.listAll()).contains(talkUpdate);
 //    }
 
     private ConferenceTalk sampleTalk() {
@@ -53,6 +53,13 @@ public class ConferenceTalkDaoTest {
         talk.setId(Long.valueOf(1));
         talk.setTitle("My Talk Title");
         talk.setDescription("A longer description of the talk");
+        talk.setTopic("Some arbitrary topic name");
+        return talk;
+    }
+
+    private ConferenceTalk updatedTalk() throws SQLException {
+        ConferenceTalk talk = new ConferenceTalk();
+        dao.update(Long.valueOf(1), "A new Title", "A new description", "A new topic name");
         return talk;
     }
 }

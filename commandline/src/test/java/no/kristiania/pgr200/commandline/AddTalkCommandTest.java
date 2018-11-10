@@ -28,7 +28,7 @@ public class AddTalkCommandTest {
 //        command.setDescription("My description");
 //        command.setTopic("My topic");
 //
-//        HttpPostRequest request = command.createRequest("localhost", 10080);
+//        HttpRequest request = command.createRequest("localhost", 10080);
 //        assertThat(request.getUrl()).isEqualTo("http://localhost:10080/api/talks");
 //        HttpQuery query = new HttpQuery().add("title", "My talk")
 //                .add("description", "My description")
