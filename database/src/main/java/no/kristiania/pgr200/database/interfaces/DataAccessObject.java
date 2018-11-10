@@ -1,4 +1,4 @@
-package no.kristiania.pgr200.database;
+package no.kristiania.pgr200.database.interfaces;
 
 import java.sql.SQLException;
 import java.util.List;

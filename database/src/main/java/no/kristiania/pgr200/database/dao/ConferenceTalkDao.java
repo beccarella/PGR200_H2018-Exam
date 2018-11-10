@@ -1,7 +1,7 @@
 package no.kristiania.pgr200.database.dao;
 
 import no.kristiania.pgr200.database.entity.ConferenceTalk;
-import no.kristiania.pgr200.database.DataAccessObject;
+import no.kristiania.pgr200.database.interfaces.DataAccessObject;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

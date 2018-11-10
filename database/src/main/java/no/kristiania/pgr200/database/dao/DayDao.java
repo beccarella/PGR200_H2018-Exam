@@ -1,6 +1,6 @@
 package no.kristiania.pgr200.database.dao;
 
-import no.kristiania.pgr200.database.DataAccessObject;
+import no.kristiania.pgr200.database.interfaces.DataAccessObject;
 import no.kristiania.pgr200.database.entity.Day;
 
 import javax.sql.DataSource;

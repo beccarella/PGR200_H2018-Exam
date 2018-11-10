@@ -1,6 +1,6 @@
 package no.kristiania.pgr200.database.dao;
 
-import no.kristiania.pgr200.database.ResultSetMapper;
+import no.kristiania.pgr200.database.interfaces.ResultSetMapper;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
