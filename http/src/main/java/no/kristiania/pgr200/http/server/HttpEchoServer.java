@@ -1,19 +1,27 @@
 package no.kristiania.pgr200.http.server;
 
+import no.kristiania.pgr200.database.dao.ConferenceTalkDao;
+import no.kristiania.pgr200.database.main.DatabaseConnection;
 import no.kristiania.pgr200.http.client.HttpIO;
 
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
 public class HttpEchoServer {
 
+    DataSource dataSource;
     private ServerSocket serverSocket;
 
-    public HttpEchoServer(int port) throws IOException {
+    public HttpEchoServer(DataSource dataSource, int port) throws IOException {
         serverSocket = new ServerSocket(port);
+        this.dataSource = dataSource;
 
         new Thread(this::runServerThread).start();
     }
@@ -33,17 +41,16 @@ public class HttpEchoServer {
                     }
                 }
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
     }
 
     public void handleRequest(Socket clientSocket) throws IOException {
-        String statusCode;
-        String body;
+        String statusCode = null;
+        String body = null;
 
-        HttpQuery query;
+        HttpQuery query = null;
         HttpHeader responseHeaders = new HttpHeader();
 
         try {
@@ -60,13 +67,18 @@ public class HttpEchoServer {
                 query = path.query();
             }
 
+            ConferenceTalkDao dao = new ConferenceTalkDao(DatabaseConnection.createDataSource());
+
             statusCode = query.get("status").orElse("200");
-            body = query.get("body").orElse("None");
+            body = dao.listAll().toString();
+//            body = query.get("body").orElse("None");
         } catch (RuntimeException e) {
             e.printStackTrace();
             writeResponseLine(clientSocket, "500");
             responseHeaders.writeTo(clientSocket.getOutputStream());
             return;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         writeResponseLine(clientSocket, statusCode);
@@ -87,7 +99,6 @@ public class HttpEchoServer {
         HttpIO.writeLine(clientSocket.getOutputStream(), "HTTP/1.1 " + statusCode + " " + statusMessage);
     }
 
-
     private static Map<String, String> statusMessages = new HashMap<>();
     static {
         statusMessages.put("200", "OK");
@@ -106,7 +117,7 @@ public class HttpEchoServer {
     }
 
     public static void main(String[] args) throws IOException {
-        new HttpEchoServer(10080);
+        new HttpEchoServer(DatabaseConnection.createDataSource(),10080);
     }
 
     public int getPort() {

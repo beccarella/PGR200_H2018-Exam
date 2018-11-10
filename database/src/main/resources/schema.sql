@@ -8,11 +8,6 @@ create table if not exists timeslots (
     time time
 );
 
-create table if not exists topics (
-    id serial primary key,
-    topic varchar
-);
-
 create table if not exists conference_talks (
     id serial primary key,
     title varchar not null,

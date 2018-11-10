@@ -16,47 +16,47 @@ public class ConferenceTalkDao extends AbstractDao implements DataAccessObject&l
 <span class="fc" id="L16">        super(dataSource);</span>
 <span class="fc" id="L17">    }</span>
 
+
     public void insertTalk(String title, String description, String topic) throws SQLException {
-<span class="nc" id="L20">        try (Connection connection = dataSource.getConnection()) {</span>
-<span class="nc" id="L21">            String sql =</span>
+<span class="nc" id="L21">        try (Connection connection = dataSource.getConnection()) {</span>
+<span class="nc" id="L22">            String sql =</span>
                     &quot;insert into conference_talks (title, description, topic) values (?, ?, ?)&quot;;
-<span class="nc" id="L23">            try (PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {</span>
-<span class="nc" id="L24">                statement.setString(1, title);</span>
-<span class="nc" id="L25">                statement.setString(2, description);</span>
-<span class="nc" id="L26">                statement.setString(3, topic);</span>
-<span class="nc" id="L27">                statement.executeUpdate();</span>
+<span class="nc" id="L24">            try (PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {</span>
+<span class="nc" id="L25">                statement.setString(1, title);</span>
+<span class="nc" id="L26">                statement.setString(2, description);</span>
+<span class="nc" id="L27">                statement.setString(3, topic);</span>
+<span class="nc" id="L28">                statement.executeUpdate();</span>
             }
         }
-<span class="nc" id="L30">    }</span>
+<span class="nc" id="L31">    }</span>
 
     @Override
     public void save(ConferenceTalk talk) throws SQLException {
-<span class="fc" id="L34">        try (Connection connection = dataSource.getConnection()) {</span>
-<span class="fc" id="L35">            String sql =</span>
+<span class="fc" id="L35">        try (Connection connection = dataSource.getConnection()) {</span>
+<span class="fc" id="L36">            String sql =</span>
                     &quot;insert into conference_talks (title, description, topic) values (?, ?, ?)&quot;;
-<span class="fc" id="L37">            try (PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {</span>
-<span class="fc" id="L38">                statement.setString(1, talk.getTitle());</span>
-<span class="fc" id="L39">                statement.setString(2, talk.getDescription());</span>
-<span class="fc" id="L40">                statement.setString(3, talk.getTopic());</span>
-<span class="fc" id="L41">                statement.executeUpdate();</span>
+<span class="fc" id="L38">            try (PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {</span>
+<span class="fc" id="L39">                statement.setString(1, talk.getTitle());</span>
+<span class="fc" id="L40">                statement.setString(2, talk.getDescription());</span>
+<span class="fc" id="L41">                statement.setString(3, talk.getTopic());</span>
+<span class="fc" id="L42">                statement.executeUpdate();</span>
 
-<span class="fc" id="L43">                try (ResultSet rs = statement.getGeneratedKeys()) {</span>
-<span class="fc" id="L44">                    rs.next();</span>
-<span class="fc" id="L45">                    talk.setId(rs.getLong(1));</span>
+<span class="fc" id="L44">                try (ResultSet rs = statement.getGeneratedKeys()) {</span>
+<span class="fc" id="L45">                    rs.next();</span>
+<span class="fc" id="L46">                    talk.setId(rs.getLong(1));</span>
                 }
             }
         }
-<span class="fc" id="L49">    }</span>
+<span class="fc" id="L50">    }</span>
 
-    public void update(Long id, String newTitle, String newDescription, String newTopic) throws SQLException {
-<span class="nc" id="L52">        try(Connection connection = dataSource.getConnection()) {</span>
-<span class="nc" id="L53">            String sql =</span>
-                    &quot;update conference_talks set title = ? set description = ? set topic = ? where id = ?&quot;;
-<span class="nc" id="L55">            try(PreparedStatement statement = connection.prepareStatement(sql)) {</span>
-<span class="nc" id="L56">                statement.setLong(1, id);</span>
-<span class="nc" id="L57">                statement.setString(2, newTitle);</span>
-<span class="nc" id="L58">                statement.setString(3, newDescription);</span>
-<span class="nc" id="L59">                statement.setString(4, newTopic);</span>
+    public void update(Long id, String newTitle) throws SQLException {
+<span class="nc" id="L53">        try(Connection connection = dataSource.getConnection()) {</span>
+<span class="nc" id="L54">            String sql =</span>
+                    &quot;update conference_talks set title = ? where id = ?&quot;;
+<span class="nc" id="L56">            try(PreparedStatement statement = connection.prepareStatement(sql)) {</span>
+<span class="nc" id="L57">                statement.setLong(1, id);</span>
+<span class="nc" id="L58">                statement.setString(2, newTitle);</span>
+
 <span class="nc" id="L60">                statement.executeUpdate();</span>
             }
         }

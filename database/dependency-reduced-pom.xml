@@ -41,7 +41,7 @@
         <configuration>
           <transformers>
             <transformer>
-              <mainClass>no.kristiania.pgr200.database.DatabaseMain</mainClass>
+              <mainClass>no.kristiania.pgr200.database.main.DatabaseMain</mainClass>
             </transformer>
           </transformers>
         </configuration>

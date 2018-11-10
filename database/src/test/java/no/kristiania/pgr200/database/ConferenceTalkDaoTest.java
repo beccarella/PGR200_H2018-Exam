@@ -40,7 +40,7 @@ public class ConferenceTalkDaoTest {
     }
 
 //    @Test
-//    public void shouldUpdateTalk() throws SQLException {
+//    public void shouldUpdateTalkTitle() throws SQLException {
 //        ConferenceTalk talk = sampleTalk();
 //        dao.save(talk);
 //        assertThat(dao.listAll()).contains(talk);
@@ -59,7 +59,7 @@ public class ConferenceTalkDaoTest {
 
     private ConferenceTalk updatedTalk() throws SQLException {
         ConferenceTalk talk = new ConferenceTalk();
-        dao.update(Long.valueOf(1), "A new Title", "A new description", "A new topic name");
+        dao.update(Long.valueOf(1), "A new Title");
         return talk;
     }
 }

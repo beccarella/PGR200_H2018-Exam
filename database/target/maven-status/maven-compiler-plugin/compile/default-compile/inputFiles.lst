@@ -1,6 +1,6 @@
-/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/database/src/main/java/no/kristiania/pgr200/database/DatabaseMain.java
 /Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/database/src/main/java/no/kristiania/pgr200/database/entity/Day.java
 /Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/database/src/main/java/no/kristiania/pgr200/database/interfaces/ResultSetMapper.java
+/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/database/src/main/java/no/kristiania/pgr200/database/main/DatabaseConnection.java
 /Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/database/src/main/java/no/kristiania/pgr200/database/interfaces/DataAccessObject.java
 /Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/database/src/main/java/no/kristiania/pgr200/database/dao/TimeslotDao.java
 /Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/database/src/main/java/no/kristiania/pgr200/database/entity/Timeslot.java
@@ -8,3 +8,4 @@
 /Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/database/src/main/java/no/kristiania/pgr200/database/dao/DayDao.java
 /Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/database/src/main/java/no/kristiania/pgr200/database/dao/ConferenceTalkDao.java
 /Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/database/src/main/java/no/kristiania/pgr200/database/dao/AbstractDao.java
+/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/database/src/main/java/no/kristiania/pgr200/database/main/DatabaseMain.java

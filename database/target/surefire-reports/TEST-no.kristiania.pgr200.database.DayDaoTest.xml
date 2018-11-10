@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="no.kristiania.pgr200.database.DayDaoTest" time="0.01" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="no.kristiania.pgr200.database.DayDaoTest" time="0.009" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="10.0.1+10"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/lib"/>
     <property name="gopherProxySet" value="false"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/database"/>
     <property name="java.vm.vendor" value="&quot;Oracle Corporation&quot;"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="user.country" value="NO"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella"/>
+    <property name="user.dir" value="/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/database"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="java.runtime.version" value="10.0.1+10"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
@@ -67,5 +67,5 @@
   </properties>
   <testcase classname="no.kristiania.pgr200.database.DayDaoTest" name="shouldFindDayById" time="0.003"/>
   <testcase classname="no.kristiania.pgr200.database.DayDaoTest" name="shouldDeleteDay" time="0.003"/>
-  <testcase classname="no.kristiania.pgr200.database.DayDaoTest" name="shouldCreateDay" time="0.004"/>
+  <testcase classname="no.kristiania.pgr200.database.DayDaoTest" name="shouldCreateDay" time="0.003"/>
 </testsuite>

@@ -32,12 +32,12 @@ public class HttpRequest {
 <span class="fc" id="L32">        try (Socket socket = new Socket(hostname, port)) {</span>
 <span class="fc" id="L33">            writeRequestLine(socket);</span>
 
-<span class="fc bfc" id="L35" title="All 2 branches covered.">            if (body != null) {</span>
-<span class="fc" id="L36">                httpHeader.setContentLength(body.getBytes().length);</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">            if (body != null) {</span>
+<span class="nc" id="L36">                httpHeader.setContentLength(body.getBytes().length);</span>
             }
 <span class="fc" id="L38">            httpHeader.writeTo(socket.getOutputStream());</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">            if (body != null) {</span>
-<span class="fc" id="L40">                socket.getOutputStream().write(body.getBytes());</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">            if (body != null) {</span>
+<span class="nc" id="L40">                socket.getOutputStream().write(body.getBytes());</span>
             }
 
 <span class="fc" id="L43">            return new HttpResponse(socket);</span>
@@ -49,12 +49,12 @@ public class HttpRequest {
 <span class="fc" id="L49">    }</span>
 
     public void setMethod(String method) {
-<span class="fc" id="L52">        this.method = method;</span>
-<span class="fc" id="L53">    }</span>
+<span class="nc" id="L52">        this.method = method;</span>
+<span class="nc" id="L53">    }</span>
 
     public void setFormBody(HttpQuery query) {
-<span class="fc" id="L56">        this.body = query.toString();</span>
-<span class="fc" id="L57">        httpHeader.put(&quot;Content-type&quot;, &quot;application/x-www-form-urlencoded&quot;);</span>
-<span class="fc" id="L58">    }</span>
+<span class="nc" id="L56">        this.body = query.toString();</span>
+<span class="nc" id="L57">        httpHeader.put(&quot;Content-type&quot;, &quot;application/x-www-form-urlencoded&quot;);</span>
+<span class="nc" id="L58">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

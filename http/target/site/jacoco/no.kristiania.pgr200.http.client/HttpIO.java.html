@@ -21,8 +21,8 @@ import java.io.OutputStream;
     }
 
     public static String readBody(InputStream inputStream, int contentLength) throws IOException {
-<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (contentLength &lt; 0) {</span>
-<span class="fc" id="L25">            return null;</span>
+<span class="pc bpc" id="L24" title="1 of 2 branches missed.">        if (contentLength &lt; 0) {</span>
+<span class="nc" id="L25">            return null;</span>
         }
 <span class="fc" id="L27">        StringBuilder result = new StringBuilder();</span>
 
