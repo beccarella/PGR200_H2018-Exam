@@ -27,6 +27,40 @@ public class ConferenceCliClientTest {
     }
 
     @Test
+    public void shouldDecodeAddCommandInAnyOrder() {
+        String topic = SampleData.sampleTopic();
+        String title = SampleData.sampleText(5);
+        String description = SampleData.sampleText(10);
+        ConferenceClientCommand command = client.decodeCommand(new String[] {
+                "add",
+                "-topic", topic,
+                "-title", title,
+                "-description", description
+        });
+
+        AddTalkCommand expectedCommand = new AddTalkCommand();
+        expectedCommand.setTopic(topic);
+        expectedCommand.setTitle(title);
+        expectedCommand.setDescription(description);
+        assertThat(command).isInstanceOf(AddTalkCommand.class)
+                .isEqualToComparingFieldByField(expectedCommand);
+    }
+
+    @Test
+    public void shouldDecodeListCommand() {
+        String topic = SampleData.sampleTopic();
+        ConferenceClientCommand command = client.decodeCommand(new String[] {
+                "list", "-topic", topic
+        });
+
+        ListTalkCommand expectedCommand = new ListTalkCommand();
+        expectedCommand.setTopic(topic);
+        assertThat(command)
+                .isInstanceOf(ListTalkCommand.class)
+                .isEqualToComparingFieldByField(command);
+    }
+
+    @Test
     public void shouldDecodeAddCommandWithTopic() {
         String title = SampleData.sampleText(5);
         String description = SampleData.sampleText(10);

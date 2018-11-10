@@ -1,5 +1,15 @@
 # PGR200 Hovedinnlevering
 
+Rebecca Urquhart(urqreb17) og Tharin Cho (clotha17)
+
+
+## Hvordan kjøre programmet
+
+
+## Vurdering av eget arbeid
+Vi valgte å beholde samme gruppe som på arbeidskrav 2 da vi følte vi arbeidet forholdsvis greit sammen. Vi har et forholdsvis likt kunnskap-og ferdighetsnivå, og det skal sies at det ikke er blant det høyeste i klassen, men vi følte at vi lærte såpass mye da vi jobbet sammen sist, at vi tenkte vi ville få like mye ut av et nytt samarbeid. 
+Dette har vært et adskillig tøffere prosjekt å jobbe med. Stressnivået har vært skyhøyt, vi har blitt pushet til randen og det har vært ikke alltid vært den beste tonen oss i mellom. Vi har likevel klart å komme frem til en løsning, som kanskje ikke er like god som vi skulle ønske, men som vi begge har lagt absolutt alt vi har i. Hadde vi blitt vurdert ut i fra hvor mye sjel, blod, svette og tårer vi har lagt i arbeidet, så hadde vi definitivt fått en A. Rent faglig sett derimot, så mener vi at vi har gjort nok til å få en C.
+
 Innleveringsfrist: 12. november kl 09:00. **Viktig:** WiseFlow *stenger* når fristen er ute - lever i tide.
 
 Tag koden med `innlevering` i GitHub og last opp en ZIP-fil til WiseFlow. Dersom du ikke fikk godkjent innlevering #1 eller #2 i første runde, last opp zip-fil av disse i tillegg.

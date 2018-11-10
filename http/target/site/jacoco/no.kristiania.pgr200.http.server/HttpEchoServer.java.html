@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HttpEchoServer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">http</a> &gt; <a href="index.source.html" class="el_package">no.kristiania.pgr200.http.server</a> &gt; <span class="el_source">HttpEchoServer.java</span></div><h1>HttpEchoServer.java</h1><pre class="source lang-java linenums">package no.kristiania.pgr200.http.server;
+
+import no.kristiania.pgr200.http.client.HttpIO;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+
+public class HttpEchoServer {
+
+    private ServerSocket serverSocket;
+
+<span class="fc" id="L15">    public HttpEchoServer(int port) throws IOException {</span>
+<span class="fc" id="L16">        serverSocket = new ServerSocket(port);</span>
+
+<span class="fc" id="L18">        new Thread(this::runServerThread).start();</span>
+<span class="fc" id="L19">    }</span>
+
+    private void runServerThread() {
+        while (true) {
+<span class="fc" id="L23">            Socket clientSocket = null;</span>
+            try {
+<span class="fc" id="L25">                clientSocket = serverSocket.accept();</span>
+<span class="fc" id="L26">                handleRequest(clientSocket);</span>
+<span class="nc" id="L27">            } catch (RuntimeException e) {</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">                if (clientSocket != null) {</span>
+                    try {
+<span class="nc" id="L30">                        clientSocket.close();</span>
+<span class="nc" id="L31">                    } catch (IOException ioEx) {</span>
+<span class="nc" id="L32">                        e.printStackTrace();</span>
+<span class="nc" id="L33">                    }</span>
+                }
+<span class="nc" id="L35">            } catch (IOException e) {</span>
+                // TODO Auto-generated catch block
+<span class="nc" id="L37">                e.printStackTrace();</span>
+<span class="pc" id="L38">            }</span>
+<span class="fc" id="L39">        }</span>
+    }
+
+    public void handleRequest(Socket clientSocket) throws IOException {
+        String statusCode;
+        String body;
+
+        HttpQuery query;
+<span class="fc" id="L47">        HttpHeader responseHeaders = new HttpHeader();</span>
+
+        try {
+<span class="fc" id="L50">            String requestLine = HttpIO.readLine(clientSocket.getInputStream());</span>
+<span class="fc" id="L51">            String requestTarget = requestLine.split(&quot; &quot;)[1];</span>
+<span class="fc" id="L52">            HttpPath path = new HttpPath(requestTarget);</span>
+
+<span class="fc" id="L54">            HttpHeader headers = new HttpHeader();</span>
+<span class="fc" id="L55">            headers.readHeaders(clientSocket.getInputStream());</span>
+
+<span class="fc bfc" id="L57" title="All 2 branches covered.">            if (requestLine.split(&quot; &quot;)[0].equals(&quot;POST&quot;)) {</span>
+<span class="fc" id="L58">                query = new HttpQuery(HttpIO.readBody(clientSocket.getInputStream(), headers.getContentLength()));</span>
+            } else {
+<span class="fc" id="L60">                query = path.query();</span>
+            }
+
+<span class="fc" id="L63">            statusCode = query.get(&quot;status&quot;).orElse(&quot;200&quot;);</span>
+<span class="fc" id="L64">            body = query.get(&quot;body&quot;).orElse(&quot;None&quot;);</span>
+<span class="fc" id="L65">        } catch (RuntimeException e) {</span>
+<span class="fc" id="L66">            e.printStackTrace();</span>
+<span class="fc" id="L67">            writeResponseLine(clientSocket, &quot;500&quot;);</span>
+<span class="fc" id="L68">            responseHeaders.writeTo(clientSocket.getOutputStream());</span>
+<span class="fc" id="L69">            return;</span>
+<span class="fc" id="L70">        }</span>
+
+<span class="fc" id="L72">        writeResponseLine(clientSocket, statusCode);</span>
+<span class="fc" id="L73">        responseHeaders</span>
+<span class="fc" id="L74">                .put(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)</span>
+<span class="fc" id="L75">                .setContentLength(body.length());</span>
+<span class="fc" id="L76">        query.get(&quot;Location&quot;).ifPresent(value -&gt; {</span>
+<span class="fc" id="L77">            responseHeaders.put(&quot;Location&quot;, value);</span>
+<span class="fc" id="L78">        });</span>
+
+<span class="fc" id="L80">        responseHeaders.writeTo(clientSocket.getOutputStream());</span>
+
+<span class="fc" id="L82">        clientSocket.getOutputStream().write(body.getBytes());</span>
+<span class="fc" id="L83">    }</span>
+
+    public void writeResponseLine(Socket clientSocket, String statusCode) throws IOException {
+<span class="fc" id="L86">        String statusMessage = getStatusMessage(statusCode);</span>
+<span class="fc" id="L87">        HttpIO.writeLine(clientSocket.getOutputStream(), &quot;HTTP/1.1 &quot; + statusCode + &quot; &quot; + statusMessage);</span>
+<span class="fc" id="L88">    }</span>
+
+
+<span class="fc" id="L91">    private static Map&lt;String, String&gt; statusMessages = new HashMap&lt;&gt;();</span>
+    static {
+<span class="fc" id="L93">        statusMessages.put(&quot;200&quot;, &quot;OK&quot;);</span>
+<span class="fc" id="L94">        statusMessages.put(&quot;202&quot;, &quot;Accepted&quot;);</span>
+<span class="fc" id="L95">        statusMessages.put(&quot;400&quot;, &quot;Bad Request&quot;);</span>
+<span class="fc" id="L96">        statusMessages.put(&quot;403&quot;, &quot;Forbidden&quot;);</span>
+<span class="fc" id="L97">        statusMessages.put(&quot;404&quot;, &quot;Not Found&quot;);</span>
+<span class="fc" id="L98">        statusMessages.put(&quot;500&quot;, &quot;Internal Server Error&quot;);</span>
+<span class="fc" id="L99">        statusMessages.put(&quot;503&quot;, &quot;Service Unavailable&quot;);</span>
+<span class="fc" id="L100">        statusMessages.put(&quot;504&quot;, &quot;Gateway Timeout&quot;);</span>
+<span class="fc" id="L101">    }</span>
+
+
+    private String getStatusMessage(String statusCode) {
+<span class="fc" id="L105">        return statusMessages.get(statusCode);</span>
+    }
+
+    public static void main(String[] args) throws IOException {
+<span class="nc" id="L109">        new HttpEchoServer(10080);</span>
+<span class="nc" id="L110">    }</span>
+
+    public int getPort() {
+<span class="fc" id="L113">        return serverSocket.getLocalPort();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

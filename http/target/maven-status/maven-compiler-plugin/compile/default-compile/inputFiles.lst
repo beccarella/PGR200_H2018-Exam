@@ -1,7 +1,8 @@
-/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/HttpPath.java
-/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/HttpQuery.java
-/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/HttpEchoServer.java
-/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/HttpResponse.java
-/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/HttpRequest.java
-/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/HttpIO.java
-/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/HttpHeaders.java
+/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/server/HttpEchoServer.java
+/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/client/HttpResponse.java
+/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/client/HttpPostRequest.java
+/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/server/HttpQuery.java
+/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/server/HttpHeader.java
+/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/server/HttpPath.java
+/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/client/HttpGetRequest.java
+/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http/src/main/java/no/kristiania/pgr200/http/client/HttpIO.java

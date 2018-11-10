@@ -1,7 +1,5 @@
 package no.kristiania.pgr200.commandline.commands;
 
-import no.kristiania.pgr200.http.client.HttpPostRequest;
-
 public class AddTalkCommand implements ConferenceClientCommand {
 
     private String title;
@@ -30,15 +28,6 @@ public class AddTalkCommand implements ConferenceClientCommand {
 
     public void setTopic(String topic) {
         this.topic = topic;
-    }
-
-    public HttpPostRequest createRequest(String host, int port) {
-        HttpPostRequest request =  new HttpPostRequest(host, port, "/api/talks");
-        request.getFormQuery().add("title", getTitle());
-        request.getFormQuery().add("description", getDescription());
-        request.getFormQuery().add("topic", getTopic());
-
-        return request;
     }
 
     @Override
