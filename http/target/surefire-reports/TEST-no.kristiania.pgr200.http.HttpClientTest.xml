@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="no.kristiania.pgr200.http.HttpClientTest" time="0.715" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="no.kristiania.pgr200.http.HttpClientTest" time="0.704" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="10.0.1+10"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/lib"/>
     <property name="gopherProxySet" value="false"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/rebeccaurquhart/desktop/pgr200-eksamen-beccarella"/>
     <property name="java.vm.vendor" value="&quot;Oracle Corporation&quot;"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
-    <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="sun.os.patch.level" value="unknown"/>
     <property name="user.country" value="NO"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/http"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="user.dir" value="/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="java.runtime.version" value="10.0.1+10"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
     <property name="os.arch" value="x86_64"/>
@@ -35,15 +35,15 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="os.version" value="10.14"/>
-    <property name="library.jansi.path" value="/usr/local/Cellar/maven/3.5.4/libexec/lib/jansi-native"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="library.jansi.path" value="/usr/local/Cellar/maven/3.5.4/libexec/lib/jansi-native"/>
     <property name="user.home" value="/Users/rebeccaurquhart"/>
     <property name="user.timezone" value="Europe/Oslo"/>
     <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="10"/>
-    <property name="user.name" value="rebeccaurquhart"/>
     <property name="java.class.path" value="/usr/local/Cellar/maven/3.5.4/libexec/boot/plexus-classworlds-2.5.2.jar"/>
+    <property name="user.name" value="rebeccaurquhart"/>
     <property name="java.vm.specification.version" value="10"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean install"/>
@@ -58,15 +58,15 @@
     <property name="file.separator" value="/"/>
     <property name="java.version.date" value="2018-04-17"/>
     <property name="java.vendor.url.bug" value="http://bugreport.java.com/bugreport/"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="java.vendor.version" value="18.3"/>
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="no.kristiania.pgr200.http.HttpClientTest" name="shouldParseStatusLine" time="0.164"/>
-  <testcase classname="no.kristiania.pgr200.http.HttpClientTest" name="shouldReadBody" time="0.188"/>
-  <testcase classname="no.kristiania.pgr200.http.HttpClientTest" name="shouldParseHeaders" time="0.181"/>
-  <testcase classname="no.kristiania.pgr200.http.HttpClientTest" name="shouldExecuteHttpRequest" time="0.182"/>
+  <testcase classname="no.kristiania.pgr200.http.HttpClientTest" name="shouldParseStatusLine" time="0.175"/>
+  <testcase classname="no.kristiania.pgr200.http.HttpClientTest" name="shouldReadBody" time="0.177"/>
+  <testcase classname="no.kristiania.pgr200.http.HttpClientTest" name="shouldParseHeaders" time="0.177"/>
+  <testcase classname="no.kristiania.pgr200.http.HttpClientTest" name="shouldExecuteHttpRequest" time="0.175"/>
 </testsuite>

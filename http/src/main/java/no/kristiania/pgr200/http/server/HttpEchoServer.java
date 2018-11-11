@@ -1,8 +1,9 @@
 package no.kristiania.pgr200.http.server;
 
+import no.kristiania.pgr200.database.DatabaseConnection;
 import no.kristiania.pgr200.database.dao.ConferenceTalkDao;
-import no.kristiania.pgr200.database.main.DatabaseConnection;
 import no.kristiania.pgr200.http.client.HttpIO;
+
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -16,7 +17,7 @@ import java.util.Map;
 
 public class HttpEchoServer {
 
-    DataSource dataSource;
+    static DataSource dataSource;
     private ServerSocket serverSocket;
 
     public HttpEchoServer(DataSource dataSource, int port) throws IOException {
@@ -67,7 +68,7 @@ public class HttpEchoServer {
                 query = path.query();
             }
 
-            ConferenceTalkDao dao = new ConferenceTalkDao(DatabaseConnection.createDataSource());
+            ConferenceTalkDao dao = new ConferenceTalkDao(dataSource);
 
             statusCode = query.get("status").orElse("200");
             body = dao.listAll().toString();

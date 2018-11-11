@@ -10,7 +10,6 @@
       <module>commandline</module>
   </modules>
 
-
   <name>PGR200 Mappeinnlevering</name>
   <packaging>pom</packaging>
 
@@ -41,6 +40,21 @@
             <groupId>org.logevents</groupId>
             <artifactId>logevents</artifactId>
             <version>0.1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.197</version>
         </dependency>
     </dependencies>
 
@@ -73,6 +87,15 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>5.2.0</version>
+                <configuration>
+                    <url>jdbc:h2:./db/migration</url>
+                    <user>sa</user>
+                </configuration>
             </plugin>
         </plugins>
     </build>

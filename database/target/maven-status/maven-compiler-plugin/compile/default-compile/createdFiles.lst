@@ -1,11 +1,11 @@
 no/kristiania/pgr200/database/dao/AbstractDao.class
-no/kristiania/pgr200/database/main/DatabaseMain.class
 no/kristiania/pgr200/database/entity/ConferenceTalk.class
 no/kristiania/pgr200/database/entity/Timeslot.class
-no/kristiania/pgr200/database/main/DatabaseConnection.class
 no/kristiania/pgr200/database/interfaces/ResultSetMapper.class
 no/kristiania/pgr200/database/interfaces/DataAccessObject.class
+no/kristiania/pgr200/database/DatabaseConnection.class
 no/kristiania/pgr200/database/entity/Day.class
 no/kristiania/pgr200/database/dao/TimeslotDao.class
 no/kristiania/pgr200/database/dao/DayDao.class
+no/kristiania/pgr200/database/DatabaseMain.class
 no/kristiania/pgr200/database/dao/ConferenceTalkDao.class
