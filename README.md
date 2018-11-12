@@ -12,22 +12,26 @@ Rebecca Urquhart(urqreb17) og Tharin Chobkaphol (clotha17)
 > mvn test
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
-[INFO] Building conference-server 0.1-SNAPSHOT
-[INFO] ------------------------------------------------------------------------
-[INFO]
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ conference-server ---
-[INFO] Compiling 25 source files to e:\Profiles\jbrodwal\workspaces\demo\conference-server\target\classes
-[INFO]
-[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ conference-server ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 9 source files to e:\Profiles\jbrodwal\workspaces\demo\conference-server\target\test-classes
-[INFO]
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ conference-server ---
-
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] PGR200 Mappeinnlevering                                            [pom]
+[INFO] database                                                           [jar]
+[INFO] http                                                               [jar]
+[INFO] commandline                                                        [jar]
+[INFO] 
+[INFO] ----------< no.kristiania.pgr200:pgr200-innlevering-starter >-----------
+[INFO] Building PGR200 Mappeinnlevering 0.0.1-SNAPSHOT                    [1/4]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (default) @ pgr200-innlevering-starter ---
+[INFO] argLine set to -javaagent:/Users/rebeccaurquhart/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/Users/rebeccaurquhart/Desktop/pgr200-eksamen-beccarella/target/jacoco.exec
+....
 -------------------------------------------------------
  T E S T S
 -------------------------------------------------------
 ....
+
+
 > mvn install
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
@@ -48,22 +52,25 @@ Rebecca Urquhart(urqreb17) og Tharin Chobkaphol (clotha17)
 [INFO] Finished at: 2018-07-08T17:18:12+02:00
 [INFO] Final Memory: 21M/211M
 [INFO] ------------------------------------------------------------------------
+
+Stå i hovedpakka(hovedmodulen)
 > psql --username postgres --command="create database ... with owner .."'
-> java -jar target/database-innlevering.jar resetdb
-> java -jar target/database-innlevering.jar insert "Mitt foredrag"
-> java -jar target/database-innlevering.jar list
+> java -jar database/target/database-0.0.1-SNAPSHOT.jar insert 
+> java -jar database/target/database-0.0.1-SNAPSHOT.jar list
+> java -jar database/target/database-0.0.1-SNAPSHOT.jar resetdb
 ```
 
 
 ## Vurdering av eget arbeid
 
-Dette har vært et adskillig tøffere prosjekt å jobbe med enn arbeidskrav 2. Stressnivået har vært skyhøyt, vi har blitt pushet til randen og det har ikke alltid vært den beste tonen oss i mellom. Men vi har kjempet igjennom det og partnerskapet er fortsatt inntakt. Vi lært mye mer om det å jobbe i et partnerskap på dette prosjektet enn vi har gjort på de forrige. 
+Dette har vært et adskillig tøffere prosjekt å jobbe med enn arbeidskrav 2. Stressnivået har vært skyhøyt, vi har blitt pushet til randen og har ikke alltid hatt den beste tonen oss i mellom. Men vi har kjempet igjennom det og partnerskapet er fortsatt inntakt. Vi har blitt kjent med hverandre på godt og vondt, og har lært mye mer om det å jobbe i et partnerskap på dette prosjektet enn vi har gjort på tidligere prosjekter. 
 
-Vi har klart å komme frem til en løsning, som kanskje ikke er like god som vi skulle ønske, men som vi begge har lagt absolutt alt vi har i. Hadde vi blitt vurdert ut i fra hvor mye innsats vi har lagt i arbeidet, så hadde vi definitivt fått en A. Rent faglig sett derimot, så mener vi at vi har gjort nok til å få en C.
+Vi har klart å komme frem til en løsning, som kanskje ikke er like god som vi skulle ønske, men som vi begge har lagt absolutt alt vi har i. Hadde vi blitt vurdert ut i fra hvor mye innsats vi har lagt i arbeidet, så hadde vi definitivt fått en A. Rent faglig sett derimot, så mener vi at vi har gjort nok til å få bestått (vi øsnker oss selvfølgelig en C, men tror på en D). 
+Planen vår var å lage en langt større database og joine flere av tabellene sammen, men vi endte til slutt opp med å lage en liten og enkel database, slik at vi kunne fokusere på skikkelig funksjonalitet fremfor en grandios database arkitektur som ikke hadde fungert like bra.
 
-Vi har slitt veldig med å forstå hvor det er logisk å sette koblingen (i hvilken klasse og metode vi skal skrive koden + hvordan faktisk skrive koden) mellom server og database. På dette tidspunktet føler vi at vi fortsatt ikke er helt 100% i vår forståelse av sockets.
+Vi har slitt veldig med å få til koblingen mellom server og database. Her har vi endelig sett lyset (og det viste seg å egentlig være ganske enkelt), men når det kommer til å skrive metodene / klassene som sender tar i mot og videresender input til de riktige instansene i riktig format - der fomler vi fortsatt i mørket.
 
-Vi skulle gjerne hatt en...
+Vi skulle veldig gjerne tatt i bruk fremmednøklene vi har lagt inn i databasen, men det har vi rett og slett ikke rukket. Dette er noe vi vil jobbe videre med og bygge ut ved en senere anledning. 
 
 Vi har heller ikke rukket å lage ny video.
 

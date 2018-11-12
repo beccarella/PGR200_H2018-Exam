@@ -17,26 +17,25 @@ import java.util.Properties;
 <span class="nc" id="L17">        Properties properties = new Properties();</span>
 <span class="nc" id="L18">        InputStream input = null;</span>
         try {
-<span class="nc" id="L20">            System.out.println(System.getProperty(&quot;user.id&quot;));</span>
-<span class="nc" id="L21">            input = new FileInputStream(&quot;database/src/main/resources/innlevering.properties&quot;);</span>
-<span class="nc" id="L22">            properties.load(input);</span>
+<span class="nc" id="L20">            input = new FileInputStream(&quot;innlevering.properties&quot;);</span>
+<span class="nc" id="L21">            properties.load(input);</span>
 
-<span class="nc" id="L24">            PGPoolingDataSource dataSource = new PGPoolingDataSource();</span>
-<span class="nc" id="L25">            dataSource.setUrl(properties.getProperty(&quot;dataSource.url&quot;));</span>
-<span class="nc" id="L26">            dataSource.setUser(properties.getProperty(&quot;dataSource.username&quot;));</span>
-<span class="nc" id="L27">            dataSource.setPassword(properties.getProperty(&quot;dataSource.password&quot;));</span>
+<span class="nc" id="L23">            PGPoolingDataSource dataSource = new PGPoolingDataSource();</span>
+<span class="nc" id="L24">            dataSource.setUrl(properties.getProperty(&quot;dataSource.url&quot;));</span>
+<span class="nc" id="L25">            dataSource.setUser(properties.getProperty(&quot;dataSource.username&quot;));</span>
+<span class="nc" id="L26">            dataSource.setPassword(properties.getProperty(&quot;dataSource.password&quot;));</span>
 
-<span class="nc" id="L29">            Flyway.configure().dataSource(dataSource).load().migrate();</span>
+<span class="nc" id="L28">            Flyway.configure().dataSource(dataSource).load().migrate();</span>
 
-<span class="nc" id="L31">            return dataSource;</span>
+<span class="nc" id="L30">            return dataSource;</span>
 
-<span class="nc" id="L33">        } catch (FileNotFoundException e) {</span>
-<span class="nc" id="L34">            e.printStackTrace();</span>
+<span class="nc" id="L32">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L33">            e.printStackTrace();</span>
 
-<span class="nc" id="L36">        } catch (IOException e) {</span>
-<span class="nc" id="L37">            e.printStackTrace();</span>
-<span class="nc" id="L38">        }</span>
-<span class="nc" id="L39">        return null;</span>
+<span class="nc" id="L35">        } catch (IOException e) {</span>
+<span class="nc" id="L36">            e.printStackTrace();</span>
+<span class="nc" id="L37">        }</span>
+<span class="nc" id="L38">        return null;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

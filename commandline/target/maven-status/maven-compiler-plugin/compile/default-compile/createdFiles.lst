@@ -1,0 +1,7 @@
+no/kristiania/pgr200/commandline/commands/ConferenceClientCommand.class
+no/kristiania/pgr200/commandline/commands/UpdateTalkCommand.class
+no/kristiania/pgr200/commandline/commands/ListTalkCommand.class
+no/kristiania/pgr200/commandline/commands/AddTalkCommand.class
+no/kristiania/pgr200/commandline/ConferenceCommandlineClient.class
+no/kristiania/pgr200/commandline/commands/DeleteTalkCommand.class
+no/kristiania/pgr200/commandline/commands/ShowTalkCommand.class

@@ -49,13 +49,15 @@ public class ConferenceTalkDao extends AbstractDao implements DataAccessObject<C
         }
     }
 
-    public void update(Long id, String newTitle) throws SQLException {
+    public void update(Long id, String newTitle, String newDescription, String newTopic) throws SQLException {
         try(Connection connection = dataSource.getConnection()) {
             String sql =
-                    "update conference_talks set title = ? where id = ?";
+                    "update conference_talks set title = ?, set description = ?, set topic = ? where id = ?";
             try(PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setLong(1, id);
                 statement.setString(2, newTitle);
+                statement.setString(3, newDescription);
+                statement.setString(4, newTopic);
 
                 statement.executeUpdate();
             }

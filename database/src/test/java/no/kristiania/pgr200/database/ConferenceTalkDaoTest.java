@@ -57,9 +57,9 @@ public class ConferenceTalkDaoTest {
         return talk;
     }
 
-    private ConferenceTalk updatedTalk() throws SQLException {
-        ConferenceTalk talk = new ConferenceTalk();
-        dao.update(Long.valueOf(1), "A new Title");
-        return talk;
-    }
+//    private ConferenceTalk updatedTalk() throws SQLException {
+//        ConferenceTalk talk = new ConferenceTalk();
+//        dao.update(Long.valueOf(1), "A new Title");
+//        return talk;
+//    }
 }

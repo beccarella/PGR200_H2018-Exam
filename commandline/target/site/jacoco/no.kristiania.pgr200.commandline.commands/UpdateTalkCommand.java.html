@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UpdateTalkCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">commandline</a> &gt; <a href="index.source.html" class="el_package">no.kristiania.pgr200.commandline.commands</a> &gt; <span class="el_source">UpdateTalkCommand.java</span></div><h1>UpdateTalkCommand.java</h1><pre class="source lang-java linenums">package no.kristiania.pgr200.commandline.commands;
+
+<span class="nc" id="L3">public class UpdateTalkCommand implements ConferenceClientCommand {</span>
+
+    private String title;
+    private String description;
+    private String topic;
+
+//    public UpdateTalkCommand withTitle(String title) {
+//        this.title = title;
+//        return this;
+//    }
+//
+//    public UpdateTalkCommand withDescription(String description) {
+//        this.description = description;
+//        return this;
+//    }
+//
+//    public UpdateTalkCommand withTopic(String topic) {
+//        this.topic = topic;
+//        return this;
+//    }
+
+    public void setTitle(String title) {
+<span class="nc" id="L25">        this.title = title;</span>
+<span class="nc" id="L26">    }</span>
+
+    public void setDescription(String description) {
+<span class="nc" id="L29">        this.description = description;</span>
+<span class="nc" id="L30">    }</span>
+
+    public void setTopic(String topic) {
+<span class="nc" id="L33">        this.topic = topic;</span>
+<span class="nc" id="L34">    }</span>
+
+    @Override
+    public void readArguments(String[] args) {
+<span class="nc" id="L38">        setTitle(getArgument(args, &quot;-title&quot;));</span>
+<span class="nc" id="L39">        setTopic(getArgument(args, &quot;-topic&quot;));</span>
+<span class="nc" id="L40">        setDescription(getArgument(args, &quot;-description&quot;));</span>
+<span class="nc" id="L41">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -20,7 +20,7 @@ public class HttpServerTest {
 
     @BeforeClass
     public static void createServer() throws IOException, SQLException {
-        server = new HttpEchoServer(dataSource,0);
+        server = new HttpEchoServer(dataSource,80);
     }
 
 

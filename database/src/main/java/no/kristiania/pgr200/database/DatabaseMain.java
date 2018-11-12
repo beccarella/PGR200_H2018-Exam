@@ -33,6 +33,7 @@ public class DatabaseMain {
         } else if(args[0].equals("resetdb")) {
             resetdb();
 
+
         } else {
             ConferenceTalk testTalk = new ConferenceTalk();
             testTalk.setTitle("Some title");

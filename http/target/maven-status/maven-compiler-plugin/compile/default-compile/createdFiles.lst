@@ -1,4 +1,5 @@
 no/kristiania/pgr200/http/client/HttpRequest.class
+no/kristiania/pgr200/http/client/HttpClientHandler.class
 no/kristiania/pgr200/http/server/HttpHeader.class
 no/kristiania/pgr200/http/server/HttpEchoServer.class
 no/kristiania/pgr200/http/server/HttpQuery.class

@@ -71,15 +71,15 @@ public class HttpEchoServer {
             ConferenceTalkDao dao = new ConferenceTalkDao(dataSource);
 
             statusCode = query.get("status").orElse("200");
-            body = dao.listAll().toString();
-//            body = query.get("body").orElse("None");
+//            body = dao.listAll().toString();
+            body = query.get("body").orElse("None");
         } catch (RuntimeException e) {
             e.printStackTrace();
             writeResponseLine(clientSocket, "500");
             responseHeaders.writeTo(clientSocket.getOutputStream());
             return;
-        } catch (SQLException e) {
-            e.printStackTrace();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
         }
 
         writeResponseLine(clientSocket, statusCode);
