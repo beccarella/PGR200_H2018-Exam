@@ -1,10 +1,16 @@
 # PGR200 Hovedinnlevering
 
-Rebecca Urquhart(urqreb17) og Tharin Chobkaphol (clotha17)
+Rebecca Urquhart(urqreb17) og Tharin Chobkaphol (chotha17)
 
 
 ## Hvordan kjøre programmet
 
+Stå i parent modulen og kjør mvn test for å sjekke testene og mvn package for å lage jar filer.
+Kjør main metoden i EchoServer for å opprette forbindelse til server. Kjør deretter main metoden i HttpRequest for å sjekke at det er kobling.
+
+Etter dette kan serveren godt stoppes. De resterende kommandoene vil kun bli kjørt lokalt over terminalen.
+
+Fortsett å stå parent modulen for å kjøre jar kommandoene.
 
 #### Eksempel kjøring
 
@@ -31,8 +37,7 @@ Rebecca Urquhart(urqreb17) og Tharin Chobkaphol (clotha17)
 -------------------------------------------------------
 ....
 
-
-> mvn install
+> mvn package eller evt. mvn install
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building conference-server 0.1-SNAPSHOT
@@ -53,8 +58,8 @@ Rebecca Urquhart(urqreb17) og Tharin Chobkaphol (clotha17)
 [INFO] Final Memory: 21M/211M
 [INFO] ------------------------------------------------------------------------
 
-Stå i hovedpakka(hovedmodulen)
-> psql --username postgres --command="create database ... with owner .."'
+
+Fortsett å stå i parent module! 
 > java -jar database/target/database-0.0.1-SNAPSHOT.jar insert 
 > java -jar database/target/database-0.0.1-SNAPSHOT.jar list
 > java -jar database/target/database-0.0.1-SNAPSHOT.jar resetdb
@@ -63,16 +68,17 @@ Stå i hovedpakka(hovedmodulen)
 
 ## Vurdering av eget arbeid
 
-Dette har vært et adskillig tøffere prosjekt å jobbe med enn arbeidskrav 2. Stressnivået har vært skyhøyt, vi har blitt pushet til randen og har ikke alltid hatt den beste tonen oss i mellom. Men vi har kjempet igjennom det og partnerskapet er fortsatt inntakt. Vi har blitt kjent med hverandre på godt og vondt, og har lært mye mer om det å jobbe i et partnerskap på dette prosjektet enn vi har gjort på tidligere prosjekter. 
+Dette har vært et adskillig tøffere prosjekt å jobbe med enn arbeidskravene. Stressnivået har vært skyhøyt, vi har blitt pushet til randen og har ikke alltid hatt den beste tonen oss i mellom. Men vi har kjempet igjennom det og partnerskapet er fortsatt inntakt. Vi har blitt kjent med hverandre på godt og vondt, og har lært mye mer om det å jobbe i et partnerskap på dette prosjektet enn vi har gjort på tidligere prosjekter. 
 
-Vi har klart å komme frem til en løsning, som kanskje ikke er like god som vi skulle ønske, men som vi begge har lagt absolutt alt vi har i. Hadde vi blitt vurdert ut i fra hvor mye innsats vi har lagt i arbeidet, så hadde vi definitivt fått en A. Rent faglig sett derimot, så mener vi at vi har gjort nok til å få bestått (vi øsnker oss selvfølgelig en C, men tror på en D). 
-Planen vår var å lage en langt større database og joine flere av tabellene sammen, men vi endte til slutt opp med å lage en liten og enkel database, slik at vi kunne fokusere på skikkelig funksjonalitet fremfor en grandios database arkitektur som ikke hadde fungert like bra.
+Overlappende eksamen for det ene team medlemmet fikk noen uheldige konsekvenser, og vi gikk rett og slett tom for tid og ressurser til å kunne implentere kode som kunne sende og motta data over socket. Hadde vi rukket dette er vi sikre på at vi kunne klart å oppnå en B karakter.
+Planen vår var også å lage en langt større database og joine flere av tabellene sammen, men vi endte til slutt opp med å lage en liten og enkel database, slik at vi kunne fokusere på skikkelig funksjonalitet fremfor en grandios database arkitektur som ikke hadde fungert like bra.
+I prosjektet ligger det også en modul ved navn commandline. Denne blir dessverre ikke tatt i bruk av programmet, grunnet tidspress, men vi har valgt å ikke fjerne den, for å vise til planene vi jobbet mot, og fordi vi syns koden med tilhørende tester er god (dog uferdig).
 
-Vi har slitt veldig med å få til koblingen mellom server og database. Her har vi endelig sett lyset (og det viste seg å egentlig være ganske enkelt), men når det kommer til å skrive metodene / klassene som sender tar i mot og videresender input til de riktige instansene i riktig format - der fomler vi fortsatt i mørket.
+Vi har slitt veldig med å få til koblingen mellom server og database. Her har vi endelig sett lyset (og det viste seg å egentlig være ganske enkelt). "innlevering.properties" filen har også gitt oss helt enormt mye hodebry. Dette har vært en gjenganger hos alle gruppene virker det som, og både vi og veileder har brukt unødvendig mye tid på å få dette til. Tid som ellers kunne blitt brukt til å skrive faktisk kode.
 
-Vi skulle veldig gjerne tatt i bruk fremmednøklene vi har lagt inn i databasen, men det har vi rett og slett ikke rukket. Dette er noe vi vil jobbe videre med og bygge ut ved en senere anledning. 
+Vi har til slutt klart å komme frem til en kjørbar løsning, som kanskje ikke er like god som vi skulle ønske, men som vi begge har lagt absolutt alt vi har i. Hadde vi blitt vurdert ut i fra hvor mye innsats vi har lagt i arbeidet, så hadde vi definitivt fått en A++. Rent faglig sett derimot, så mener vi at vi har gjort nok til å få bestått (vi ønsker oss selvfølgelig en C og mener vi har god nok og ryddig nok kode til det, men er redd vi kan ende opp med en D).
 
-Vi har heller ikke rukket å lage ny video.
+
 
 ### Arkitektur
 

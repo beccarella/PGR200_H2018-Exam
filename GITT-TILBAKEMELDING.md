@@ -1,6 +1,6 @@
 ## Gitt tilbakemelding
 
-Ida Gylvik(gylida17) og Ulrik Håland (halurl17)
+
 
 
 
