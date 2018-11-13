@@ -32,13 +32,12 @@ public class DatabaseMain {
 
 	public void run(String[] args) throws SQLException, IOException {
 		if (args.length == 0) {
-			System.out.println("Run the class with an argument, on of `insert`, or ...");
 			System.exit(1);
 		}
 
 		String command = args[0];
 
-		if (command.equals("insert")) { // Default insertion of tables in DB
+		if (command.equals("insert")) {
 			insertTalk();
 			Timeslot testTimeslot = new Timeslot();
 			testTimeslot.setTime(LocalTime.of(9, 00));
@@ -48,14 +47,19 @@ public class DatabaseMain {
 			dayDao.save(testDay);
 
 			System.out.println("Tables successfully added to Database!");
+
 		} else if (command.equals("resetdb")) {
 			resetdb();
-		} else if (command.equals("list")) { // Default insertion of tables in DB
+
+		} else if (command.equals("list")) {
 			list(args);
+
 		} else if (command.equals("show")) {
 			show(args);
+
 		} else if (command.equals("update")) {
 			update(args);
+
 		} else if (command.equals("add")) {
 			insertTalkCmd(args);
 		}
@@ -65,9 +69,7 @@ public class DatabaseMain {
 		talkDao.insertTalk("Java workshop", "Introduction to java programming language", "Java");
 		talkDao.insertTalk("HTML & CSS workshop", "Introduction to HTML & CSS", "HTML & CSS");
 		talkDao.insertTalk("Kotlin workshop", "Introduction to Kotlin programming language", "Kotlin");
-		// timeDao.insertTime(LocalTime.of(10, 00), LocalTime.of(12, 00));
-		// timeDao.insertTime(LocalTime.of(12, 30), LocalTime.of(14, 30));
-		// timeDao.insertTime(LocalTime.of(14, 30), LocalTime.of(16, 30));
+
 	}
 
 	// ** COMMAND LINE ARGUMENTS ***
@@ -83,7 +85,10 @@ public class DatabaseMain {
 		}
 	}
 
-	// Show the detail of an conference.
+	/**
+	 * Shows the detail of a conference.
+	 */
+
 	public List show(String[] args) throws SQLException, IOException {
 		List list = null;
 		String command1 = args[1];
@@ -103,7 +108,9 @@ public class DatabaseMain {
 		return list;
 	}
 
-	// List every conference and its topic FCK
+	/**
+	 * List every conference and its topic
+	 */
 	private List<String> list(String[] args) throws SQLException, IOException {
 		List<String> list = null;
 		String command1 = args[1];
@@ -121,9 +128,9 @@ public class DatabaseMain {
 		return list;
 	}
 
-	/*
+	/**
 	 * Update the title of an existing conference. The conference title can be
-	 * chosen by user input FAEN
+	 * chosen by user input
 	 */
 	private List update(String[] args) throws SQLException, IOException {
 		List list = null;
@@ -137,7 +144,7 @@ public class DatabaseMain {
 		return list;
 	}
 
-	/*
+	/**
 	 * Add a new a new conference The title, description and topic can be set by
 	 * user input.
 	 */
@@ -151,10 +158,6 @@ public class DatabaseMain {
 	}
 
 	public static void main(String[] args) throws SQLException, IOException {
-
-		// ConferenceTalkDao conferenceTalkDao = new
-		// ConferenceTalkDao(DatabaseConnection.createDataSource());
-		// DayDao dayDao = new DayDao(DatabaseConnection.createDataSource());
 		TimeslotDao timeslotDao = new TimeslotDao(DatabaseConnection.createDataSource());
 		new DatabaseMain().run(args);
 	}

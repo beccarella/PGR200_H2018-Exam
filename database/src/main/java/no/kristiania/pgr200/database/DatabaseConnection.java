@@ -17,7 +17,7 @@ public class DatabaseConnection {
         Properties properties = new Properties();
         InputStream input = null;
         try {
-            input = new FileInputStream("src/main/resources/innlevering.properties");
+            input = new FileInputStream("innlevering.properties");
             properties.load(input);
 
             PGPoolingDataSource dataSource = new PGPoolingDataSource();

@@ -5,12 +5,21 @@ Rebecca Urquhart(urqreb17) og Tharin Chobkaphol (chotha17)
 
 ## Hvordan kjøre programmet
 
-Stå i parent modulen og kjør mvn test for å sjekke testene og mvn package for å lage jar filer.
+Stå i parent modulen og kjør kommandoen "mvn test" i terminalen for å sjekke testene og "mvn package" for å lage jar filer.
 Kjør main metoden i EchoServer for å opprette forbindelse til server. Kjør deretter main metoden i HttpRequest for å sjekke at det er kobling.
 
 Etter dette kan serveren godt stoppes. De resterende kommandoene vil kun bli kjørt lokalt over terminalen.
 
-Fortsett å stå parent modulen for å kjøre jar kommandoene.
+Fortsett å stå i parent modulen for å kjøre java -jar kommandoene. Se lengst nede i eksempel kjøring for java -jar kommandoer.
+
+Liste over argumenter til jar kommandoer:
+1. insert  - oppretter tabeller i databasen
+2. add  - legger til en ny rad i tabellen
+3. update -updatetitle  - oppdaterer tittel i en rad
+4. show -topic  - viser talks med det spesifikt topic. (tilgjengelige topics: java, HTML & CSS, kotlin)
+5. list -talks -topics   - lister opp talks etter navn og topic
+6. resetdb  - sletter alle tabellene i databasen
+
 
 #### Eksempel kjøring
 
@@ -59,10 +68,24 @@ Fortsett å stå parent modulen for å kjøre jar kommandoene.
 [INFO] ------------------------------------------------------------------------
 
 
-Fortsett å stå i parent module! 
+Fortsett å stå i parent module 
 > java -jar database/target/database-0.0.1-SNAPSHOT.jar insert 
-> java -jar database/target/database-0.0.1-SNAPSHOT.jar list
+> java -jar database/target/database-0.0.1-SNAPSHOT.jar add
+> java -jar database/target/database-0.0.1-SNAPSHOT.jar update -updatetitle
+> java -jar database/target/database-0.0.1-SNAPSHOT.jar show -topic
+> java -jar database/target/database-0.0.1-SNAPSHOT.jar list -talks -topics
 > java -jar database/target/database-0.0.1-SNAPSHOT.jar resetdb
+
+
+evt, dersom man står i database modulen
+
+> cd database
+> java -jar target/database-0.0.1-SNAPSHOT.jar insert 
+> java -jar target/database-0.0.1-SNAPSHOT.jar add
+> java -jar target/database-0.0.1-SNAPSHOT.jar update -updatetitle
+> java -jar target/database-0.0.1-SNAPSHOT.jar show -topic
+> java -jar target/database-0.0.1-SNAPSHOT.jar list -talks -topics
+> java -jar target/database-0.0.1-SNAPSHOT.jar resetdb
 ```
 
 
@@ -71,110 +94,20 @@ Fortsett å stå i parent module!
 Dette har vært et adskillig tøffere prosjekt å jobbe med enn arbeidskravene. Stressnivået har vært skyhøyt, vi har blitt pushet til randen og har ikke alltid hatt den beste tonen oss i mellom. Men vi har kjempet igjennom det og partnerskapet er fortsatt inntakt. Vi har blitt kjent med hverandre på godt og vondt, og har lært mye mer om det å jobbe i et partnerskap på dette prosjektet enn vi har gjort på tidligere prosjekter. 
 
 Overlappende eksamen for det ene team medlemmet fikk noen uheldige konsekvenser, og vi gikk rett og slett tom for tid og ressurser til å kunne implentere kode som kunne sende og motta data over socket. Hadde vi rukket dette er vi sikre på at vi kunne klart å oppnå en B karakter.
-Planen vår var også å lage en langt større database og joine flere av tabellene sammen, men vi endte til slutt opp med å lage en liten og enkel database, slik at vi kunne fokusere på skikkelig funksjonalitet fremfor en grandios database arkitektur som ikke hadde fungert like bra.
+Planen vår var også å lage en langt større database og joine flere av tabellene sammen, men vi endte til slutt opp med å lage en liten og enkel database, slik at vi kunne fokusere på funksjonalitet fremfor en grandios database arkitektur som ikke hadde fungert like bra.
 I prosjektet ligger det også en modul ved navn commandline. Denne blir dessverre ikke tatt i bruk av programmet, grunnet tidspress, men vi har valgt å ikke fjerne den, for å vise til planene vi jobbet mot, og fordi vi syns koden med tilhørende tester er god (dog uferdig).
 
 Vi har slitt veldig med å få til koblingen mellom server og database. Her har vi endelig sett lyset (og det viste seg å egentlig være ganske enkelt). "innlevering.properties" filen har også gitt oss helt enormt mye hodebry. Dette har vært en gjenganger hos alle gruppene virker det som, og både vi og veileder har brukt unødvendig mye tid på å få dette til. Tid som ellers kunne blitt brukt til å skrive faktisk kode.
 
-Vi har til slutt klart å komme frem til en kjørbar løsning, som kanskje ikke er like god som vi skulle ønske, men som vi begge har lagt absolutt alt vi har i. Hadde vi blitt vurdert ut i fra hvor mye innsats vi har lagt i arbeidet, så hadde vi definitivt fått en A++. Rent faglig sett derimot, så mener vi at vi har gjort nok til å få bestått (vi ønsker oss selvfølgelig en C og mener vi har god nok og ryddig nok kode til det, men er redd vi kan ende opp med en D).
+Vi har til slutt klart å komme frem til en kjørbar løsning, som kanskje ikke er like god som vi skulle ønske, men som vi begge har lagt absolutt alt vi har i. Hadde vi blitt vurdert ut i fra hvor mye innsats vi har lagt i arbeidet, så hadde vi definitivt fått en A++. Rent faglig sett derimot, så mener vi at vi har gjort nok til å få bestått (vi ønsker oss selvfølgelig en C og mener vi har gjort nok til å fortjene det, men er redd vi kan ende opp med en D).
 
 
 
-### Arkitektur
+### Datamodell
 
-![Architecture Overview](doc/conference-server.png)
-
-### Programflyt
-
-![Programflyt](doc/conference-server-flow.png)
-
-### Forslag til datamodell
-
-![Datamodell](doc/conference-data-model.png)
+![Datamodell](doc/datamodell.png)
 
 ## Link til video
 
 https://www.youtube.com/watch?v=laElnEZqslE
 
-
-##
-
-I tilbakemeldingen er det lurt å stille spørsmålene: 1. Hva lærte jeg av denne koden? 2. Hva forsto jeg ikke av denne koden? 3. Hva tror jeg forfatterne av koden kunne ha nyttig av å lære?
-
-## Sjekkliste for innleveringen
-
-- [ ] Kodekvalitet
-  - [x] Koden er klonet fra GitHub classrom
-  - [ ] Produserer `mvn package` en executable jar? (tips: Bruk `maven-shade-plugin`)
-  - [ ] Bruker koden Java 8 og UTF-8
-  - [ ] Bygger prosjektet på [https://travis-ci.com](https://travis-ci.com)?
-  - [ ] Har du god test-dekning? (tips: Sett opp jacoco-maven-plugin til å kreve at minst 65% av linjene har testdekning)
-  - [ ] Er koden delt inn i flere Maven `<modules>`?
-  - [ ] Bruker kommunikasjon mellom klient og server HTTP korrekt?
-  - [ ] Kobler serveren seg opp mot PostgreSQL ved hjelp av konfigurasjon i fila `innlevering.properties` i *current working directory* med `dataSource.url`, `dataSource.username`, `dataSource.password`?
-- [ ] Funksjonalitet
-  - [ ] add: Legg til et foredrag i databasen med title, description og topic (valgfritt)
-  - [ ] list: List opp alle foredrag i basen med et valgfritt topic
-  - [ ] show: Vis detaljer for et foredrag
-  - [ ] update: Endre title, description eller topic for et foredrag
-  - [ ] Valgfri tillegg: Kommandoer for å sette opp hvor mange dager og timer konferansen skal vare og hvor mange parallelle spor den skal inneholde.
-- [ ] Dokumentasjon i form av README.md
-  - [ ] Navn og Feide-ID på dere de som var på teamet
-  - [ ] Inkluderer dokumentasjonen hvordan man tester ut funksjonaliteten programmet manuelt? (Inkludert eventuell ekstra funksjonalitet dere har tatt med)
-  - [ ] Inkluderer dokumentasjonen en evaluering av hvordan man jobbet sammen?
-  - [ ] Inkluderer dokumentasjonen en screencast av en parprogrammeringsesjon?
-  - [ ] Inkluderer dokumentasjonen en evaluering *fra* en annen gruppe og en evaluering *til* en annen gruppe?
-  - [ ] Inkluderer dokumentasjonen en UML diagram med datamodellen?
-  - [ ] Inkluderer dokumentasjonen en link til screencast av programmeringsesjon?
-  - [ ] Inkluderer dokumentasjonen en egenevaluering med hvilken karakter gruppen mener de fortjener?
-
-### Forberedelse
-
-- [ ] Finn endelig grupperpartner innen 1. november
-- [ ] Finn en gruppe for gjensidig evaluering innen 1. november
-
-### Innlevering
-
-- [ ] Gi veilederne `hakonschutt` og `mudasar187` tilgang til repository
-- [ ] Tag koden med `innlevering` i GitHub
-- [ ] Ta en zip-eksport fra GitHub
-- [ ] Last opp zip-fil i WiseFlow
-- [ ] Dersom innlevering #1 eller innlevering #2 ikke ble godkjent *i WiseFlow*, last opp zip-fil med hver av disse innleveringene
-
-## Retningslinjer for vurdering
-
-### Minimum krav for bestått
-
-- Kompilerende kode som er sjekket inn i GitHub
-- Tester som gjør noe ikke totalt ufornuftig (eksempel på ufornuftlig `assertTrue(true)` eller `assertEquals(4, 2+2)`)
-- Kjørbart program som legger inn data i databasen
-
-### Minimum krav for C
-
-- Skriv og les programmet fra databasen i Java i henhold til deres egen dokumentasjon
-- Les og skriv data over socket
-- Kode lagret på GitHub, kompilerer og utfører en oppgave uten å krasje
-
-### Minimum krav for B
-
-De fleste av følgende må være oppfyllt:
-
-- Et rimelig nivå med enhetstester som kjører på Travis CI
-- Kode uten større skrivefeil, feil innrykk, slukte exceptions eller advarsler fra Eclipse
-- Readme som beskriver 4-10 steg for å demonstrere programmet
-- God kode: Enkel, konsis, uttrykksfull, velformattert kode uten vestlige feil eller mangler
-- Ingen alvorlige feil, SQL injection hull, krasj ved uventet input
-
-### Krav for A
-
-Løsningen må oppfylle alle krav til B og ha 2-3 områder som hever den ytterligere:
-
-- Velskrevet (men ikke nødvendigvis omfattende) dokumentasjon
-- At videoen får fram kvalitetene i designet
-- Uttrykksfulle enhetstester som er effektive på å fange feil og som kjører på Travis CI
-- En velbegrunnet datamodell med 4-8 klasser
-- En lettfattelig og utvidbar http-server
-- Spennende generisk kode som egentlig er unødvendig kompleks for å løse problemet
-- Enkel kode som løser problemet presist og konsist (i konflikt med forrige)
-
-Grupper på 3 må ha flere av disse enn grupper på 2 for å få en A.
