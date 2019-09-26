@@ -1,27 +1,37 @@
-# PGR200 Hovedinnlevering
+# PGR200 Exam, autumn 2018
 
+##### Authors
 Rebecca Urquhart(urqreb17) og Tharin Chobkaphol (chotha17)
 
+## About
+The program is designed to let a user handle various conferences in a designated database. 
+Data is added to, edited or removed from the database accordingly by the user. 
 
-## Hvordan kjøre programmet
+Note: The folder "Commandline" contains code that is not implemented and is not finished. We were unable to finish this in time, but have deliberetly kept it in the final delivery to show the quality of code that was written and the inteded scope of the program.
 
-Stå i parent modulen og kjør kommandoen "mvn test" i terminalen for å sjekke testene og "mvn package" for å lage jar filer.
-Kjør main metoden i EchoServer for å opprette forbindelse til server. Kjør deretter main metoden i HttpRequest for å sjekke at det er kobling.
+## How to run the program
 
-Etter dette kan serveren godt stoppes. De resterende kommandoene vil kun bli kjørt lokalt over terminalen.
+In the parent module, run the command "mvn package" to create jar files.
+Run the main method in EchoServer to establish a connection to the server, then run the main method in HttpRequest to verify that the connection has indeed been established.
 
-Fortsett å stå i parent modulen for å kjøre java -jar kommandoene. Se lengst nede i eksempel kjøring for java -jar kommandoer.
+At this point, the connection may be closed, as the rest of the commands will be run locally.
 
-Liste over argumenter til jar kommandoer:
-1. insert  - oppretter tabeller i databasen
-2. add  - legger til en ny rad i tabellen
-3. update -updatetitle  - oppdaterer tittel i en rad
-4. show -topic  - viser talks med det spesifikt topic. (tilgjengelige topics: java, HTML & CSS, kotlin)
-5. list -talks -topics   - lister opp talks etter navn og topic
-6. resetdb  - sletter alle tabellene i databasen
+Continue to stay inside the parent module to run the java jar-commands.
+
+##### List of jar command arguments:
+1. insert  - creates tables in the db
+2. add  - adds a new row in the table
+3. update -updatetitle  - updates the title in a row
+4. show -topic  - show talks with a specific topic. (available topics: java, HTML & CSS, kotlin)
+5. list -talks -topics   - lists talks by name and topic
+6. resetdb  - deletes all the tables in the db
 
 
-#### Eksempel kjøring
+#### Testing
+Run the "mvn test" command in the terminal to run the tests and check the test coverage
+
+
+#### Running program example
 
 ```bash
 > mvn test
@@ -46,7 +56,7 @@ Liste over argumenter til jar kommandoer:
 -------------------------------------------------------
 ....
 
-> mvn package eller evt. mvn install
+> mvn package or alternately, mvn install
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building conference-server 0.1-SNAPSHOT
@@ -68,7 +78,7 @@ Liste over argumenter til jar kommandoer:
 [INFO] ------------------------------------------------------------------------
 
 
-Fortsett å stå i parent module 
+Continue within the parent module
 > java -jar database/target/database-0.0.1-SNAPSHOT.jar insert 
 > java -jar database/target/database-0.0.1-SNAPSHOT.jar add
 > java -jar database/target/database-0.0.1-SNAPSHOT.jar update -updatetitle
@@ -77,7 +87,7 @@ Fortsett å stå i parent module
 > java -jar database/target/database-0.0.1-SNAPSHOT.jar resetdb
 
 
-evt, dersom man står i database modulen
+alternately, if you are in the db module
 
 > cd database
 > java -jar target/database-0.0.1-SNAPSHOT.jar insert 
@@ -87,27 +97,3 @@ evt, dersom man står i database modulen
 > java -jar target/database-0.0.1-SNAPSHOT.jar list -talks -topics
 > java -jar target/database-0.0.1-SNAPSHOT.jar resetdb
 ```
-
-
-## Vurdering av eget arbeid
-
-Dette har vært et adskillig tøffere prosjekt å jobbe med enn arbeidskravene. Stressnivået har vært skyhøyt, vi har blitt pushet til randen og har ikke alltid hatt den beste tonen oss i mellom. Men vi har kjempet igjennom det og partnerskapet er fortsatt inntakt. Vi har blitt kjent med hverandre på godt og vondt, og har lært mye mer om det å jobbe i et partnerskap på dette prosjektet enn vi har gjort på tidligere prosjekter. 
-
-Overlappende eksamen for det ene team medlemmet fikk noen uheldige konsekvenser, og vi gikk rett og slett tom for tid og ressurser til å kunne implentere kode som kunne sende og motta data over socket. Hadde vi rukket dette er vi sikre på at vi kunne klart å oppnå en B karakter.
-Planen vår var også å lage en langt større database og joine flere av tabellene sammen, men vi endte til slutt opp med å lage en liten og enkel database, slik at vi kunne fokusere på funksjonalitet fremfor en grandios database arkitektur som ikke hadde fungert like bra.
-I prosjektet ligger det også en modul ved navn commandline. Denne blir dessverre ikke tatt i bruk av programmet, grunnet tidspress, men vi har valgt å ikke fjerne den, for å vise til planene vi jobbet mot, og fordi vi syns koden med tilhørende tester er god (dog uferdig).
-
-Vi har slitt veldig med å få til koblingen mellom server og database. Her har vi endelig sett lyset (og det viste seg å egentlig være ganske enkelt). "innlevering.properties" filen har også gitt oss helt enormt mye hodebry. Dette har vært en gjenganger hos alle gruppene virker det som, og både vi og veileder har brukt unødvendig mye tid på å få dette til. Tid som ellers kunne blitt brukt til å skrive faktisk kode.
-
-Vi har til slutt klart å komme frem til en kjørbar løsning, som kanskje ikke er like god som vi skulle ønske, men som vi begge har lagt absolutt alt vi har i. Hadde vi blitt vurdert ut i fra hvor mye innsats vi har lagt i arbeidet, så hadde vi definitivt fått en A++. Rent faglig sett derimot, så mener vi at vi har gjort nok til å få bestått (vi ønsker oss selvfølgelig en C og mener vi har gjort nok til å fortjene det, men er redd vi kan ende opp med en D).
-
-
-
-### Datamodell
-
-![Datamodell](doc/datamodell.png)
-
-## Link til video
-
-https://www.youtube.com/watch?v=laElnEZqslE
-
